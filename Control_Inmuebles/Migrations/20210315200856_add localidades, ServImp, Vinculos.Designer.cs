@@ -4,14 +4,16 @@ using Control_Inmuebles.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Control_Inmuebles.Migrations
 {
     [DbContext(typeof(Control_InmueblesContext))]
-    partial class Control_InmueblesContextModelSnapshot : ModelSnapshot
+    [Migration("20210315200856_add localidades, ServImp, Vinculos")]
+    partial class addlocalidadesServImpVinculos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

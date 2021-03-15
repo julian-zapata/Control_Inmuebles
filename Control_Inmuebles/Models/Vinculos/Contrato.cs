@@ -17,9 +17,11 @@ namespace Control_Inmuebles.Models.Vinculos
 
         [Required]
         public string PlazoContrato { get; set; }
+            //opciones por HTML
 
         [Required]
         public DateTime ClausuraContrato { get; set; }
+            //calcular 3 años a partir del alta. Tener en cuenta las clausulas.
 
         [Required]
         public int PropietarioId { get; set; }
