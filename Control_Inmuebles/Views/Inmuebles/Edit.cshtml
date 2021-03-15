@@ -1,0 +1,79 @@
+﻿@model Control_Inmuebles.Models.Inmueble
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Inmueble</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PisoInmuebleId" class="control-label"></label>
+                <input asp-for="PisoInmuebleId" class="form-control" />
+                <span asp-validation-for="PisoInmuebleId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DptoInmuebleId" class="control-label"></label>
+                <input asp-for="DptoInmuebleId" class="form-control" />
+                <span asp-validation-for="DptoInmuebleId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CiudadId" class="control-label"></label>
+                <input asp-for="CiudadId" class="form-control" />
+                <span asp-validation-for="CiudadId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProvinciaId" class="control-label"></label>
+                <input asp-for="ProvinciaId" class="form-control" />
+                <span asp-validation-for="ProvinciaId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PaisId" class="control-label"></label>
+                <input asp-for="PaisId" class="form-control" />
+                <span asp-validation-for="PaisId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Estado" class="control-label"></label>
+                <input asp-for="Estado" class="form-control" />
+                <span asp-validation-for="Estado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Observaciones" class="control-label"></label>
+                <input asp-for="Observaciones" class="form-control" />
+                <span asp-validation-for="Observaciones" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="TipoInmuebleId" class="control-label"></label>
+                <input asp-for="TipoInmuebleId" class="form-control" />
+                <span asp-validation-for="TipoInmuebleId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Direccion" class="control-label"></label>
+                <input asp-for="Direccion" class="form-control" />
+                <span asp-validation-for="Direccion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Numero" class="control-label"></label>
+                <input asp-for="Numero" class="form-control" />
+                <span asp-validation-for="Numero" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
