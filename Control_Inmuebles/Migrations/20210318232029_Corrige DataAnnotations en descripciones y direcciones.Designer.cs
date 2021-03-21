@@ -4,14 +4,16 @@ using Control_Inmuebles.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Control_Inmuebles.Migrations
 {
     [DbContext(typeof(Control_InmueblesContext))]
-    partial class Control_InmueblesContextModelSnapshot : ModelSnapshot
+    [Migration("20210318232029_Corrige DataAnnotations en descripciones y direcciones")]
+    partial class CorrigeDataAnnotationsendescripcionesydirecciones
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,9 +37,8 @@ namespace Control_Inmuebles.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Numero")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(5)")
+                    b.Property<int>("Numero")
+                        .HasColumnType("int")
                         .HasMaxLength(5);
 
                     b.Property<int>("TipoInmuebleId")
@@ -82,8 +83,8 @@ namespace Control_Inmuebles.Migrations
 
                     b.Property<string>("Descripcion")
                         .IsRequired()
-                        .HasColumnType("nvarchar(3)")
-                        .HasMaxLength(3);
+                        .HasColumnType("nvarchar(30)")
+                        .HasMaxLength(30);
 
                     b.HasKey("Id");
 
@@ -171,6 +172,7 @@ namespace Control_Inmuebles.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Departamento")
+                        .IsRequired()
                         .HasColumnType("nvarchar(1)")
                         .HasMaxLength(1);
 
@@ -196,13 +198,12 @@ namespace Control_Inmuebles.Migrations
                         .HasColumnType("nvarchar(12)")
                         .HasMaxLength(12);
 
-                    b.Property<string>("Numero")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(5)")
+                    b.Property<int>("Numero")
+                        .HasColumnType("int")
                         .HasMaxLength(5);
 
-                    b.Property<string>("Piso")
-                        .HasColumnType("nvarchar(5)")
+                    b.Property<int>("Piso")
+                        .HasColumnType("int")
                         .HasMaxLength(5);
 
                     b.Property<string>("Provincia")
@@ -235,6 +236,7 @@ namespace Control_Inmuebles.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Departamento")
+                        .IsRequired()
                         .HasColumnType("nvarchar(1)")
                         .HasMaxLength(1);
 
@@ -260,13 +262,12 @@ namespace Control_Inmuebles.Migrations
                         .HasColumnType("nvarchar(12)")
                         .HasMaxLength(12);
 
-                    b.Property<string>("Numero")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(5)")
+                    b.Property<int>("Numero")
+                        .HasColumnType("int")
                         .HasMaxLength(5);
 
-                    b.Property<string>("Piso")
-                        .HasColumnType("nvarchar(5)")
+                    b.Property<int>("Piso")
+                        .HasColumnType("int")
                         .HasMaxLength(5);
 
                     b.Property<string>("Provincia")
@@ -299,6 +300,7 @@ namespace Control_Inmuebles.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Departamento")
+                        .IsRequired()
                         .HasColumnType("nvarchar(1)")
                         .HasMaxLength(1);
 
@@ -324,13 +326,12 @@ namespace Control_Inmuebles.Migrations
                         .HasColumnType("nvarchar(12)")
                         .HasMaxLength(12);
 
-                    b.Property<string>("Numero")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(5)")
+                    b.Property<int>("Numero")
+                        .HasColumnType("int")
                         .HasMaxLength(5);
 
-                    b.Property<string>("Piso")
-                        .HasColumnType("nvarchar(5)")
+                    b.Property<int>("Piso")
+                        .HasColumnType("int")
                         .HasMaxLength(5);
 
                     b.Property<string>("Provincia")

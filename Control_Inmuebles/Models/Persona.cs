@@ -32,23 +32,23 @@ namespace Control_Inmuebles.Models
         public DateTime FechaNacimiento { get; set; }
 
         [Required(ErrorMessage = "Domicilio requerido")]
-        [StringLength(20, MinimumLength = 3, ErrorMessage = "mínimo 3 caracteres")]
+        [StringLength(30, MinimumLength = 3, ErrorMessage = "mínimo 3 caracteres")]
         [RegularExpression("^[a-zA-Z ]*$", ErrorMessage = "Solo puede ingresar letras y espacios")]
         public string Domicilio { get; set; }
 
         [RegularExpression("(^[0-9]+$)", ErrorMessage = "Solo se permiten números")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "El número es obligatorio")]
         [StringLength(5, ErrorMessage = "El número es demasiado largo")]
-        public int Numero { get; set; }
+        public string Numero { get; set; }
         //Hacer un metodo que indique que si no tiene numero aparezca un cartel S/N
 
         [RegularExpression("(^[0-9]+$)", ErrorMessage = "Solo se permiten números")]
         [StringLength(5, ErrorMessage = "El número es demasiado largo")]
-        public int Piso { get; set; }
+        public string Piso { get; set; }
 
         [RegularExpression("^[a-zA-Z ]*$", ErrorMessage = "Solo una letra o un numero")]
         [StringLength(1, ErrorMessage = "Solo un caracter")]
-        public char Departamento { get; set; }
+        public string Departamento { get; set; }
 
         [Required(ErrorMessage = "Barrio requerido")]
         [RegularExpression("^[a-zA-Z ]*$", ErrorMessage = "Solo puede ingresar letras y espacios")]

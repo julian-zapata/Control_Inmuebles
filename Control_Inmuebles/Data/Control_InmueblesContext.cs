@@ -9,14 +9,32 @@ using Control_Inmuebles.Models.Inmuebles;
 using Control_Inmuebles.Models.Localidades;
 using Control_Inmuebles.Models.Servicios_Impuestos;
 using Control_Inmuebles.Models.Vinculos;
+using Microsoft.Extensions.Configuration;
 
 namespace Control_Inmuebles.Data
 {
     public class Control_InmueblesContext : DbContext
     {
+        public Control_InmueblesContext() : base()
+        {
+            initContext();
+        }
+
         public Control_InmueblesContext (DbContextOptions<Control_InmueblesContext> options)
             : base(options)
         {
+            initContext();
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder options) => options.UseSqlServer(connectionString);
+
+        private string connectionString;
+        private void initContext()
+        {
+            var builder = new ConfigurationBuilder();
+            builder.AddJsonFile("appsettings.json", optional: false);
+            var configuration = builder.Build();
+            connectionString = configuration.GetConnectionString("Control_InmueblesContext").ToString();
         }
 
         public DbSet<Control_Inmuebles.Models.Personas.Garante> Garante { get; set; }
@@ -50,5 +68,6 @@ namespace Control_Inmuebles.Data
         public DbSet<Control_Inmuebles.Models.Servicios_Impuestos.TipoServicio> TipoServicio { get; set; }
 
         public DbSet<Control_Inmuebles.Models.Vinculos.Contrato> Contrato { get; set; }
+
     }
 }

@@ -25,7 +25,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.BaseInmuebleId)
+                @Html.DisplayFor(modelItem => item.GetTipo().Direccion) @Html.DisplayFor(modelItem => item.GetTipo().Numero)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Descripcion)

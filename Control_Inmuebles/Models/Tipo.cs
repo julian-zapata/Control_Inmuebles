@@ -12,8 +12,9 @@ namespace Control_Inmuebles.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Campo requerido")]
-        [StringLength(20, MinimumLength = 3, ErrorMessage = "mínimo 3 caracteres")]
+        [StringLength(30, MinimumLength = 3, ErrorMessage = "mínimo 3 caracteres")]
         [RegularExpression("^[a-zA-Z ]*$", ErrorMessage = "Solo puede ingresar letras y espacios")]
         public string Descripcion { get; set; }
+
     }
 }

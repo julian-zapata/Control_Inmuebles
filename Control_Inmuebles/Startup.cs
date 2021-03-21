@@ -34,7 +34,6 @@ namespace Control_Inmuebles
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
-
             services.AddDbContext<Control_InmueblesContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("Control_InmueblesContext")));
         }

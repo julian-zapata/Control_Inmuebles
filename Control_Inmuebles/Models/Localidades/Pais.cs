@@ -7,5 +7,6 @@ namespace Control_Inmuebles.Models.Localidades
 {
     public class Pais : Tipo
     {
+       
     }
 }

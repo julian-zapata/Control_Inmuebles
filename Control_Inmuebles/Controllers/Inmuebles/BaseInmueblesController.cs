@@ -7,11 +7,13 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Control_Inmuebles.Data;
 using Control_Inmuebles.Models.Inmuebles;
+using Control_Inmuebles.Helpers;
 
 namespace Control_Inmuebles.Controllers.Inmuebles
 {
     public class BaseInmueblesController : Controller
     {
+        
         private readonly Control_InmueblesContext _context;
 
         public BaseInmueblesController(Control_InmueblesContext context)
@@ -46,6 +48,7 @@ namespace Control_Inmuebles.Controllers.Inmuebles
         // GET: BaseInmuebles/Create
         public IActionResult Create()
         {
+            ViewBag.ListaTipoInmueble = HGetListas.GetTipoInmuebleSelectList();
             return View();
         }
 
@@ -68,6 +71,8 @@ namespace Control_Inmuebles.Controllers.Inmuebles
         // GET: BaseInmuebles/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            ViewBag.ListaTipoInmueble = HGetListas.GetTipoInmuebleSelectList();
+
             if (id == null)
             {
                 return NotFound();

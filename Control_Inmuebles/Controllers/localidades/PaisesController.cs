@@ -149,5 +149,7 @@ namespace Control_Inmuebles.Controllers.localidades
         {
             return _context.Pais.Any(e => e.Id == id);
         }
+
+        
     }
 }

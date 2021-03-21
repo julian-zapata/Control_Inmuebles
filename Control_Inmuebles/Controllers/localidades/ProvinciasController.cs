@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Control_Inmuebles.Data;
 using Control_Inmuebles.Models.Localidades;
+using Control_Inmuebles.Helpers;
 
 namespace Control_Inmuebles.Controllers.localidades
 {
@@ -46,6 +47,7 @@ namespace Control_Inmuebles.Controllers.localidades
         // GET: Provincias/Create
         public IActionResult Create()
         {
+            ViewBag.ListaPais = HGetListas.GetPaisesSelectList();
             return View();
         }
 
@@ -148,6 +150,13 @@ namespace Control_Inmuebles.Controllers.localidades
         private bool ProvinciaExists(int id)
         {
             return _context.Provincia.Any(e => e.Id == id);
+        }
+
+        public JsonResult GetProvincias(int PaisId)
+        {
+            var ciudades = _context.Ciudad.Where(x => x.PaisId == PaisId).ToList();
+
+            return Json(ciudades);
         }
     }
 }

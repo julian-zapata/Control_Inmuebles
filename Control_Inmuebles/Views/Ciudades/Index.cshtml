@@ -13,6 +13,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.PaisId)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.ProvinciaId)
             </th>
             <th>
@@ -25,7 +28,10 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ProvinciaId)
+                @Html.DisplayFor(modelItem => item.GetPais().Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GetProvincia().Descripcion)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Descripcion)

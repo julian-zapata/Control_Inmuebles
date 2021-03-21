@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Create";
+    SelectList tipoBaseInmueble = ViewBag.ListaTipoInmueble;
 }
 
 <h1>Create</h1>
@@ -14,12 +15,12 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="BaseInmuebleId" class="control-label"></label>
-                <input asp-for="BaseInmuebleId" class="form-control" />
+                <select asp-for="BaseInmuebleId" asp-items=tipoBaseInmueble class="form-control"></select>
                 <span asp-validation-for="BaseInmuebleId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Descripcion" class="control-label"></label>
-                <input asp-for="Descripcion" class="form-control" />
+                <input asp-for="Descripcion" class="form-control" id="Piso" />
                 <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -35,4 +36,9 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+   <script>
+
+   </script>
+
 }

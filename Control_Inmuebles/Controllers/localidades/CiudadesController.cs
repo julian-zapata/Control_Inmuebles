@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Control_Inmuebles.Data;
 using Control_Inmuebles.Models.Localidades;
+using Control_Inmuebles.Helpers;
 
 namespace Control_Inmuebles.Controllers.localidades
 {
@@ -46,6 +47,8 @@ namespace Control_Inmuebles.Controllers.localidades
         // GET: Ciudads/Create
         public IActionResult Create()
         {
+            ViewBag.ListaPais = HGetListas.GetPaisesSelectList();
+            ViewBag.ListaProvincias = HGetListas.GetProvinciasSelectList();
             return View();
         }
 
@@ -54,7 +57,7 @@ namespace Control_Inmuebles.Controllers.localidades
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProvinciaId,Id,Descripcion")] Ciudad ciudad)
+        public async Task<IActionResult> Create([Bind("PaisId,ProvinciaId,Id,Descripcion")] Ciudad ciudad)
         {
             if (ModelState.IsValid)
             {
@@ -149,5 +152,7 @@ namespace Control_Inmuebles.Controllers.localidades
         {
             return _context.Ciudad.Any(e => e.Id == id);
         }
+
+        
     }
 }

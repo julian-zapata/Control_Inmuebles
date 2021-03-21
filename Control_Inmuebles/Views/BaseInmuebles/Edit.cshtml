@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Edit";
+    SelectList tipoInmueble = ViewBag.ListaTipoInmueble;
 }
 
 <h1>Edit</h1>
@@ -15,7 +16,7 @@
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="TipoInmuebleId" class="control-label"></label>
-                <input asp-for="TipoInmuebleId" class="form-control" />
+                <select asp-for="TipoInmuebleId" asp-items=tipoInmueble class="form-control"></select>
                 <span asp-validation-for="TipoInmuebleId" class="text-danger"></span>
             </div>
             <div class="form-group">
