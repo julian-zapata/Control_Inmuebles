@@ -1,4 +1,5 @@
 ﻿using Control_Inmuebles.Data;
+using Control_Inmuebles.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,5 @@ namespace Control_Inmuebles.Models.Localidades
             Provincia provincia = context.Provincia.Where(x => x.Id == ProvinciaId).FirstOrDefault();
             return provincia;
         }
-
     }
 }

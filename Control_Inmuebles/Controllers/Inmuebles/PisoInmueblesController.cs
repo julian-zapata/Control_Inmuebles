@@ -48,6 +48,7 @@ namespace Control_Inmuebles.Controllers.Inmuebles
         public IActionResult Create()
         {
             ViewBag.ListaTipoInmueble = HGetListas.GetBaseInmuebleSelectList();
+            ViewBag.ListaDirecInmueble = HGetListas.GetDirecInmuebleSelectList();
             return View();
         }
 
@@ -56,7 +57,7 @@ namespace Control_Inmuebles.Controllers.Inmuebles
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BaseInmuebleId,Id,Descripcion")] PisoInmueble pisoInmueble)
+        public async Task<IActionResult> Create([Bind("BaseInmuebleId,Id,Descripcion,TipoInmuebleId")] PisoInmueble pisoInmueble)
         {
             if (ModelState.IsValid)
             {
@@ -71,6 +72,7 @@ namespace Control_Inmuebles.Controllers.Inmuebles
         public async Task<IActionResult> Edit(int? id)
         {
             ViewBag.ListaTipoInmueble = HGetListas.GetBaseInmuebleSelectList();
+            ViewBag.ListaDirecInmueble = HGetListas.GetDirecInmuebleSelectList();
 
             if (id == null)
             {
@@ -90,7 +92,7 @@ namespace Control_Inmuebles.Controllers.Inmuebles
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("BaseInmuebleId,Id,Descripcion")] PisoInmueble pisoInmueble)
+        public async Task<IActionResult> Edit(int id, [Bind("BaseInmuebleId,Id,Descripcion,TipoInmuebleId")] PisoInmueble pisoInmueble)
         {
             if (id != pisoInmueble.Id)
             {
@@ -153,5 +155,16 @@ namespace Control_Inmuebles.Controllers.Inmuebles
         {
             return _context.PisoInmueble.Any(e => e.Id == id);
         }
+
+        public JsonResult GetDatoInmueble(int baseInmuebleId, int tipoInmuebleId, string numPiso)
+        {
+            var verPisos = new PisoInmueble();
+            verPisos.BaseInmuebleId = baseInmuebleId;
+            verPisos.TipoInmuebleId = tipoInmuebleId;
+            verPisos.Descripcion = numPiso;
+
+            return Json(verPisos);
+        }
+
     }
 }

@@ -35,7 +35,14 @@ namespace Control_Inmuebles.Helpers
         public static SelectList GetBaseInmuebleSelectList()
         {
             var listaBaseInmueble = _context.TipoInmueble.ToList();
-            var SelectListBaseInmueble = new SelectList(listaBaseInmueble, "Id", "Descripcion", "Numero");
+            var SelectListBaseInmueble = new SelectList(listaBaseInmueble, "Id", "Descripcion");
+            return SelectListBaseInmueble;
+        }
+
+        public static SelectList GetDirecInmuebleSelectList()
+        {
+            var listaBaseInmueble = _context.BaseInmueble.ToList();
+            var SelectListBaseInmueble = new SelectList(listaBaseInmueble, "Id","Direccion", "Numero");
             return SelectListBaseInmueble;
         }
     }

@@ -20,13 +20,22 @@ namespace Control_Inmuebles.Models.Inmuebles
         [Required]
         public int BaseInmuebleId { get; set; }
 
-        public BaseInmueble GetTipo()
+        public int TipoInmuebleId { get; set; }
+
+        Control_InmueblesContext context = new Control_InmueblesContext();
+
+        public BaseInmueble GetDirecInmueble()
         {
             BaseInmueble tipo;
-            using (var context = new Control_InmueblesContext())
-            {
-                tipo = context.BaseInmueble.Where(x => x.Id == BaseInmuebleId).FirstOrDefault();
-            }
+            tipo = context.BaseInmueble.Where(x => x.Id == BaseInmuebleId).FirstOrDefault();
+            return tipo;
+            //para mostrar la direccion
+        }
+
+        public TipoInmueble GetTipo()
+        {
+            TipoInmueble tipo;
+            tipo = context.TipoInmueble.Where(x => x.Id == TipoInmuebleId).FirstOrDefault();
             return tipo;
             //para mostrar la direccion
         }
