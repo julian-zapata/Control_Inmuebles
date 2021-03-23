@@ -20,22 +20,24 @@
                 <span asp-validation-for="BaseInmuebleId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TipoInmuebleId" class="control-label"></label>
-                <select asp-for="TipoInmuebleId" asp-items=tipoBaseInmueble class="form-control" id="tipoInmueble"></select>
-                <span asp-validation-for="TipoInmuebleId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Descripcion" class="control-label"></label>
                 <input asp-for="Descripcion" class="form-control" id="Piso" />
                 <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
 
-            <div id="PisosCreados"></div>
+
 
             <div class="form-group">
                 <input type="submit" value="Create" id="CreaPisos" class="btn btn-primary" />
             </div>
         </form>
+
+        <div class="form-group">
+            <input type="submit" value="Genera" onclick="AgregaPiso()" class="btn btn-primary" />
+        </div>
+
+        <div id="PisosCreados"></div>
+
     </div>
 </div>
 
@@ -47,31 +49,27 @@
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 
    <script>
-       $(document).ready(function () {
 
-           $("#CreaPisos").click(function (){
+       function AgregaPiso() {
+           var url = "/PisoInmuebles/AddPisos";
+           var inmueble = $("#DirecInmueble").val();
+           var piso = $("#Piso").val();
 
-               var piso = $("#Piso").val();
-               var direccion = $("#DirecInmueble").val();
-               var tipo = $("#tipoInmueble").val();
+           //alert("inmueble: " + inmueble);
+           //alert("piso" + piso);
 
-               for(var i = 0; i > piso.length(); i++) {
+           $.getJSON(url, { inmuebleId: inmueble, pisos: piso }, function (data) {
 
-                   pisos = {
-                       baseInmuebleId: direccion,
-                       tipoInmuebleId: tipo,
-                       numPiso: i.val()
-                   };
+               var item = "";
+               $.each(data, function (i, numpiso) {
+                   item += '<div class="col-md-4">' + numpiso.baseInmuebleId + '</div> <div class="col-md-4">' + numpiso.descripcion + '</div>';
+               });
 
-                   $.post("/PisoInmuebles/GetDatoInmueble/", pisos, function (response) {
-                       $("$PisosCreados").html(response);
-                       console.log(response);
-                   })
+               $("#PisosCreados").html(item);
 
-                   return true;
-               }
            });
-       });
+       }
+
    </script>
 
 }

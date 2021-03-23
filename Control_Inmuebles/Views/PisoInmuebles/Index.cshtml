@@ -15,10 +15,7 @@
             <th >
                 @Html.DisplayNameFor(model => model.BaseInmuebleId)
             </th>
-            <th >
-                @Html.DisplayNameFor(model => model.TipoInmuebleId)
-            </th>
-            <th >
+            <th id="PisoCero">
                 @Html.DisplayNameFor(model => model.Descripcion)
             </th>
             <th></th>
@@ -30,10 +27,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.GetDirecInmueble().Direccion)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GetTipo().Descripcion)
-            </td>
-            <td>
+            <td id="pisoCreado">
                 @Html.DisplayFor(modelItem => item.Descripcion)
             </td>
             <td>

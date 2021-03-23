@@ -154,9 +154,9 @@ namespace Control_Inmuebles.Controllers.localidades
 
         public JsonResult GetProvincias(int PaisId)
         {
-            var ciudades = _context.Ciudad.Where(x => x.PaisId == PaisId).ToList();
+            var provincias = _context.Provincia.Where(x => x.PaisId == PaisId).ToList();
 
-            return Json(ciudades);
+            return Json(provincias);
         }
     }
 }

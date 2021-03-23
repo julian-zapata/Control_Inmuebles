@@ -156,15 +156,19 @@ namespace Control_Inmuebles.Controllers.Inmuebles
             return _context.PisoInmueble.Any(e => e.Id == id);
         }
 
-        public JsonResult GetDatoInmueble(int baseInmuebleId, int tipoInmuebleId, string numPiso)
-        {
-            var verPisos = new PisoInmueble();
-            verPisos.BaseInmuebleId = baseInmuebleId;
-            verPisos.TipoInmuebleId = tipoInmuebleId;
-            verPisos.Descripcion = numPiso;
+        private static List<PisoInmueble> pisoList = new List<PisoInmueble>();
 
-            return Json(verPisos);
+        public JsonResult AddPisos(int inmuebleId, string pisos)
+        {
+            var agregaPiso = new PisoInmueble();
+            agregaPiso.BaseInmuebleId = inmuebleId;
+            agregaPiso.Descripcion = pisos;
+
+            pisoList.Add(agregaPiso);
+
+            return Json(pisoList);
         }
+
 
     }
 }

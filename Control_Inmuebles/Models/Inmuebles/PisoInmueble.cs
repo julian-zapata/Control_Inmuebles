@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -20,24 +21,15 @@ namespace Control_Inmuebles.Models.Inmuebles
         [Required]
         public int BaseInmuebleId { get; set; }
 
-        public int TipoInmuebleId { get; set; }
-
-        Control_InmueblesContext context = new Control_InmueblesContext();
-
         public BaseInmueble GetDirecInmueble()
         {
             BaseInmueble tipo;
-            tipo = context.BaseInmueble.Where(x => x.Id == BaseInmuebleId).FirstOrDefault();
+            using(var context = new Control_InmueblesContext())
+            {
+                tipo = context.BaseInmueble.Where(x => x.Id == BaseInmuebleId).FirstOrDefault();
+            }
             return tipo;
-            //para mostrar la direccion
         }
 
-        public TipoInmueble GetTipo()
-        {
-            TipoInmueble tipo;
-            tipo = context.TipoInmueble.Where(x => x.Id == TipoInmuebleId).FirstOrDefault();
-            return tipo;
-            //para mostrar la direccion
-        }
     }
 }

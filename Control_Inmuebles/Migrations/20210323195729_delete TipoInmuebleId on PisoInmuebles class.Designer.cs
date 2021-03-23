@@ -4,14 +4,16 @@ using Control_Inmuebles.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Control_Inmuebles.Migrations
 {
     [DbContext(typeof(Control_InmueblesContext))]
-    partial class Control_InmueblesContextModelSnapshot : ModelSnapshot
+    [Migration("20210323195729_delete TipoInmuebleId on PisoInmuebles class")]
+    partial class deleteTipoInmuebleIdonPisoInmueblesclass
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
