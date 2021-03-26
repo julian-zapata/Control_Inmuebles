@@ -28,7 +28,6 @@ namespace Control_Inmuebles.Models
         public string Estado { get; set; }
         //Ocupado o desocupado. Valor por lista en HTML
 
-        [Required]
         [StringLength(50, ErrorMessage = "míáximo 50 caracteres")]
         [RegularExpression("^[a-zA-Z ]*$", ErrorMessage = "Solo puede ingresar letras y espacios")]
         public string Observaciones { get; set; }

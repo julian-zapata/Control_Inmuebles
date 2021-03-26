@@ -21,3 +21,21 @@ $("#PaisId").change(function () {
 
     });
 });
+
+$("#BaseInmuebleId-Create").change(function () {
+    var inmuebleSelect = $("#BaseInmuebleId-Create").val();
+    var url = "/PisoInmuebles/GetPisos";
+
+    $.getJSON(url, { baseId: inmuebleSelect }, function (data) {
+
+        var item = "";
+        $("#PisoInmuebleId-Create").empty();
+        $.each(data, function (i, piso) {
+            item += "<option value = '" + piso.id + "'>" + piso.descripcion + "</option>";
+        });
+
+        $("#PisoInmuebleId-Create").html(item);
+
+    });
+});
+

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Control_Inmuebles.Models.Inmuebles.DptoInmueble>
+﻿@model IEnumerable<Control_Inmuebles.Models.Personas.Inquilino>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,14 +13,18 @@
     <thead>
         <tr>
             <th>
-                Inmueble
+                @Html.DisplayNameFor(model => model.Nombre)
             </th>
             <th>
-                Piso
+                @Html.DisplayNameFor(model => model.Apellido)
             </th>
             <th>
-                Departamento
+                @Html.DisplayNameFor(model => model.Dni)
             </th>
+            <th>
+                Nota
+            </th>
+
             <th></th>
         </tr>
     </thead>
@@ -28,14 +32,18 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.GetDirecInmueble().Direccion)
+                @Html.DisplayFor(modelItem => item.Nombre)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.GetPiso().Descripcion)
+                @Html.DisplayFor(modelItem => item.Apellido)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Descripcion)
+                @Html.DisplayFor(modelItem => item.Dni)
             </td>
+            <td>
+                @*Hay agregar campo nota en el modelo*@
+            </td>
+
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |

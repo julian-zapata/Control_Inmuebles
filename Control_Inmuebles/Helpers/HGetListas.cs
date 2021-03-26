@@ -45,5 +45,12 @@ namespace Control_Inmuebles.Helpers
             var SelectListBaseInmueble = new SelectList(listaBaseInmueble, "Id","Direccion", "Numero");
             return SelectListBaseInmueble;
         }
+
+        public static SelectList GetPisoSelectList()
+        {
+            var listaPisoInmueble = _context.PisoInmueble.ToList();
+            var SelectListPiso = new SelectList(listaPisoInmueble, "Id", "Descripcion");
+            return SelectListPiso;
+        }
     }
 }

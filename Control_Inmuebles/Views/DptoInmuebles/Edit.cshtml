@@ -2,6 +2,8 @@
 
 @{
     ViewData["Title"] = "Edit";
+    SelectList direcInmueble = ViewBag.ListaDirecInmueble;
+    SelectList pisoInmueble = ViewBag.ListaPisoInmueble;
 }
 
 <h1>Edit</h1>
@@ -14,10 +16,15 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="BaseInmuebleId" class="control-label"></label>
-                <input asp-for="BaseInmuebleId" class="form-control" />
+                <select asp-for="BaseInmuebleId" asp-items="direcInmueble" class="form-control"></select>
                 <span asp-validation-for="BaseInmuebleId" class="text-danger"></span>
             </div>
             <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="PisoInmuebleId" class="control-label"></label>
+                <select asp-for="PisoInmuebleId" asp-items="pisoInmueble" class="form-control" id="PisoInmuebleId-Create"></select>
+                <span asp-validation-for="PisoInmuebleId" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="Descripcion" class="control-label"></label>
                 <input asp-for="Descripcion" class="form-control" />

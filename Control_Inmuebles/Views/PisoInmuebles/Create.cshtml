@@ -2,7 +2,6 @@
 
 @{
     ViewData["Title"] = "Create";
-    SelectList tipoBaseInmueble = ViewBag.ListaTipoInmueble;
     SelectList direcInmueble = ViewBag.ListaDirecInmueble;
 }
 
@@ -16,27 +15,30 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="BaseInmuebleId" class="control-label"></label>
-                <select asp-for="BaseInmuebleId" asp-items=direcInmueble class="form-control" id="DirecInmueble"></select>
+                <select asp-for="BaseInmuebleId" asp-items=direcInmueble class="form-control" id="BaseInmuebleId-Create"></select>
                 <span asp-validation-for="BaseInmuebleId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Descripcion" class="control-label"></label>
-                <input asp-for="Descripcion" class="form-control" id="Piso" />
+                <label asp-for="Descripcion" class="control-label" id="NumPiso"></label>
+                <input asp-for="Descripcion" class="form-control" id="DescripcionPiso-Create" />
                 <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
-
-
 
             <div class="form-group">
                 <input type="submit" value="Create" id="CreaPisos" class="btn btn-primary" />
             </div>
+
+
         </form>
 
-        <div class="form-group">
+        @*<div>
             <input type="submit" value="Genera" onclick="AgregaPiso()" class="btn btn-primary" />
-        </div>
+            <input type="submit" value="Borrar" onclick="borrarPiso()" class="btn btn-primary" />
+        </div>*@
+        
 
-        <div id="PisosCreados"></div>
+
+
 
     </div>
 </div>
@@ -50,25 +52,36 @@
 
    <script>
 
-       function AgregaPiso() {
-           var url = "/PisoInmuebles/AddPisos";
-           var inmueble = $("#DirecInmueble").val();
-           var piso = $("#Piso").val();
+       $(document).ready(function () {
+           var piso = "Numero de piso";
+           $("#NumPiso").html(piso);
+       });
 
-           //alert("inmueble: " + inmueble);
-           //alert("piso" + piso);
+      
 
-           $.getJSON(url, { inmuebleId: inmueble, pisos: piso }, function (data) {
+       //function AgregaPiso() {
+       //    var url = "/PisoInmuebles/AddPisos";
+       //    var inmueble = $("#DirecInmueble").val();
+       //    var piso = $("#Piso").val();
 
-               var item = "";
-               $.each(data, function (i, numpiso) {
-                   item += '<div class="col-md-4">' + numpiso.baseInmuebleId + '</div> <div class="col-md-4">' + numpiso.descripcion + '</div>';
-               });
+       //    //alert("inmueble: " + inmueble);
+       //    //alert("piso" + piso);
 
-               $("#PisosCreados").html(item);
+       //    for (var i = 0; i < parseInt(piso); i++) {
 
-           });
-       }
+       //        $.getJSON(url, { inmuebleId: inmueble, pisos: i.toString() }, function (data) {
+
+       //            var item = "";
+
+       //            $.each(data, function (i, numpiso) {
+       //                item += '<div class="col-md-4">' + numpiso.baseInmuebleId + '</div> <div class="col-md-4">' + numpiso.descripcion + '</div>';
+       //            });
+
+       //            $("#PisosCreados").html(item);
+
+       //        });
+       //    }
+       //}
 
    </script>
 

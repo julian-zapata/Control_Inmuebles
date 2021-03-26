@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Control_Inmuebles.Data;
 using Control_Inmuebles.Models.Inmuebles;
+using Control_Inmuebles.Helpers;
 
 namespace Control_Inmuebles.Controllers.Inmuebles
 {
@@ -46,6 +47,8 @@ namespace Control_Inmuebles.Controllers.Inmuebles
         // GET: DptoInmuebles/Create
         public IActionResult Create()
         {
+            ViewBag.ListaDirecInmueble = HGetListas.GetDirecInmuebleSelectList();
+            ViewBag.ListaPisoInmueble = HGetListas.GetPisoSelectList();
             return View();
         }
 
@@ -54,7 +57,7 @@ namespace Control_Inmuebles.Controllers.Inmuebles
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BaseInmuebleId,Id,Descripcion")] DptoInmueble dptoInmueble)
+        public async Task<IActionResult> Create([Bind("PisoInmuebleId,BaseInmuebleId,Id,Descripcion")] DptoInmueble dptoInmueble)
         {
             if (ModelState.IsValid)
             {
@@ -68,6 +71,9 @@ namespace Control_Inmuebles.Controllers.Inmuebles
         // GET: DptoInmuebles/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            ViewBag.ListaDirecInmueble = HGetListas.GetDirecInmuebleSelectList();
+            ViewBag.ListaPisoInmueble = HGetListas.GetPisoSelectList();
+
             if (id == null)
             {
                 return NotFound();
@@ -86,7 +92,7 @@ namespace Control_Inmuebles.Controllers.Inmuebles
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("BaseInmuebleId,Id,Descripcion")] DptoInmueble dptoInmueble)
+        public async Task<IActionResult> Edit(int id, [Bind("PisoInmuebleId,BaseInmuebleId,Id,Descripcion")] DptoInmueble dptoInmueble)
         {
             if (id != dptoInmueble.Id)
             {
@@ -149,5 +155,6 @@ namespace Control_Inmuebles.Controllers.Inmuebles
         {
             return _context.DptoInmueble.Any(e => e.Id == id);
         }
+        
     }
 }
