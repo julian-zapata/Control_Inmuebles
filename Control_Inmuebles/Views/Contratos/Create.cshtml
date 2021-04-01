@@ -2,6 +2,12 @@
 
 @{
     ViewData["Title"] = "Create";
+    SelectList ListaInquilinos = ViewBag.ListaInquilino;
+    SelectList ListaPropietario = ViewBag.ListaPropietario;
+    SelectList ListaGarante = ViewBag.ListaGarante;
+    SelectList ListaEdificios = ViewBag.ListaEdificios;
+    SelectList ListaCasa = ViewBag.ListaCasa;
+    SelectList ListaCochera = ViewBag.ListaCochera;
 }
 
 <h1>Create</h1>
@@ -17,46 +23,90 @@
                 <input asp-for="AltaContrato" class="form-control" />
                 <span asp-validation-for="AltaContrato" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="PlazoContrato" class="control-label"></label>
-                <input asp-for="PlazoContrato" class="form-control" />
+                <select asp-for="PlazoContrato" class="form-control">
+                    <option>6 meses</option>
+                    <option>2 años</option>
+                    <option>3 años</option>
+                </select>
                 <span asp-validation-for="PlazoContrato" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ClausuraContrato" class="control-label"></label>
-                <input asp-for="ClausuraContrato" class="form-control" />
-                <span asp-validation-for="ClausuraContrato" class="text-danger"></span>
-            </div>
+
+
+            @*<div class="form-group">
+            <label asp-for="PlazoContrato" class="control-label"></label>
+            <input asp-for="PlazoContrato" class="form-control" />
+            <span asp-validation-for="PlazoContrato" class="text-danger"></span>
+        </div>*@
+            @*<div class="form-group">
+            <label asp-for="ClausuraContrato" class="control-label"></label>
+            <input asp-for="ClausuraContrato" class="form-control" />
+            <span asp-validation-for="ClausuraContrato" class="text-danger"></span>
+        </div>*@
             <div class="form-group">
                 <label asp-for="PropietarioId" class="control-label"></label>
-                <input asp-for="PropietarioId" class="form-control" />
+                <select asp-for="PropietarioId" asp-items="ListaPropietario" class="form-control"></select>
                 <span asp-validation-for="PropietarioId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="InquilinoId" class="control-label"></label>
-                <input asp-for="InquilinoId" class="form-control" />
+                <select asp-for="InquilinoId" asp-items="ListaInquilinos" class="form-control"></select>
                 <span asp-validation-for="InquilinoId" class="text-danger"></span>
             </div>
+
+            @*<div class="form-group">
+            <label asp-for="Inmueble" class="control-label"></label>
+            <input asp-for="Inmueble" class="form-control" />
+            <span asp-validation-for="Inmueble" class="text-danger"></span>
+        </div>*@
+
             <div class="form-group">
-                <label asp-for="InmuebleId" class="control-label"></label>
-                <input asp-for="InmuebleId" class="form-control" />
-                <span asp-validation-for="InmuebleId" class="text-danger"></span>
+                <label asp-for="Inmueble" class="control-label"></label>
+                <select asp-for="Inmueble" class="form-control" id="ElijeInmueble">
+                    <option value="0">Seleccione inmueble</option>
+                    <option value="Inmueble-Depto">Departamento</option>
+                    <option value="Inmueble-Casa">Casa</option>
+                    <option value="Inmueble-Cochera">Cochera</option>
+                </select>
+                <span asp-validation-for="Inmueble" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+                <label asp-for="DepartamentoId" class="control-label"></label>
+                <select asp-for="DepartamentoId" asp-items="ListaEdificios" class="form-control" id="DepartamentoContrato" disabled></select>
+                <span asp-validation-for="DepartamentoId" class="text-danger"></span> 
+            </div>
+
+             <div class="form-group">
+                <label asp-for="CasaId" class="control-label"></label>
+                <select asp-for="CasaId" asp-items="ListaCasa" class="form-control" id="CasaContrato" disabled></select>
+                <span asp-validation-for="CasaId" class="text-danger"></span>
+            </div>
+
+             <div class="form-group">
+                <label asp-for="CocheraId" class="control-label"></label>
+                <select asp-for="CocheraId" asp-items="ListaCochera" class="form-control" id="CocheraContrato" disabled></select>
+                <span asp-validation-for="CocheraId" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
                 <label asp-for="ValorContrato" class="control-label"></label>
                 <input asp-for="ValorContrato" class="form-control" />
                 <span asp-validation-for="ValorContrato" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DestinoInmueble" class="control-label"></label>
-                <input asp-for="DestinoInmueble" class="form-control" />
-                <span asp-validation-for="DestinoInmueble" class="text-danger"></span>
+                <label asp-for="Garante1" class="control-label"></label>
+                <select asp-for="Garante1" asp-items="ListaGarante" class="form-control"></select>
+                <span asp-validation-for="Garante1" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="GaranteId" class="control-label"></label>
-                <input asp-for="GaranteId" class="form-control" />
-                <span asp-validation-for="GaranteId" class="text-danger"></span>
+                <label asp-for="Garante2" class="control-label"></label>
+                <select asp-for="Garante2" asp-items="ListaGarante" class="form-control"></select>
+                <span asp-validation-for="Garante2" class="text-danger"></span>
             </div>
+            
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -70,4 +120,6 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+
 }

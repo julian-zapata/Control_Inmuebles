@@ -54,7 +54,7 @@ namespace Control_Inmuebles.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre,Apellido,Dni,Domicilio,Numero,Piso,Departamento,Barrio,Ciudad,Provincia,Email")] Inquilino inquilino)
+        public async Task<IActionResult> Create([Bind("Id,Nombre,Apellido,Dni,Domicilio,Numero,Piso,Departamento,Barrio,Ciudad,Provincia,Email, Nota")] Inquilino inquilino)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace Control_Inmuebles.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Apellido,Dni,Domicilio,Numero,Piso,Departamento,Barrio,Ciudad,Provincia,Email")] Inquilino inquilino)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Apellido,Dni,Domicilio,Numero,Piso,Departamento,Barrio,Ciudad,Provincia,Email,Nota")] Inquilino inquilino)
         {
             if (id != inquilino.Id)
             {
@@ -149,5 +149,13 @@ namespace Control_Inmuebles.Controllers
         {
             return _context.Inquilino.Any(e => e.Id == id);
         }
+
+        public JsonResult GetInquilinos(int InquilinoId)
+        {
+            var inq = _context.Inquilino.Where(x => x.Id == InquilinoId).ToList();
+
+            return Json(inq);
+        }
+
     }
 }

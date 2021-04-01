@@ -7,7 +7,8 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="btn  btn-primary" asp-action="Create">Crear</a>
+    <a class="btn  btn-primary" asp-controller="Registros" asp-action="Index">Volver</a>
 </p>
 <table class="table">
     <thead>
@@ -21,23 +22,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.ClausuraContrato)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PropietarioId)
-            </th>
+            
             <th>
                 @Html.DisplayNameFor(model => model.InquilinoId)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.InmuebleId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ValorContrato)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DestinoInmueble)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.GaranteId)
+            <th id="Inmueble-Contrato-Index">
+                @Html.DisplayNameFor(model => model.Inmueble)
             </th>
             <th></th>
         </tr>
@@ -55,22 +45,10 @@
                 @Html.DisplayFor(modelItem => item.ClausuraContrato)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PropietarioId)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.InquilinoId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.InmuebleId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ValorContrato)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DestinoInmueble)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GaranteId)
+                @Html.DisplayFor(modelItem => item.Inmueble)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

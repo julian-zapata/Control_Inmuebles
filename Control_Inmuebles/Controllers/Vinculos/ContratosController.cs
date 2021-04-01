@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Control_Inmuebles.Data;
 using Control_Inmuebles.Models.Vinculos;
+using Control_Inmuebles.Helpers;
 
 namespace Control_Inmuebles.Controllers.Vinculos
 {
@@ -46,6 +47,12 @@ namespace Control_Inmuebles.Controllers.Vinculos
         // GET: Contratos/Create
         public IActionResult Create()
         {
+            ViewBag.ListaInquilino = HGetListas.GetListaInquilinos();
+            ViewBag.ListaPropietario = HGetListas.GetListaPropietarios();
+            ViewBag.ListaGarante = HGetListas.GetListaGarantes();
+            ViewBag.ListaEdificios = HGetListas.GetListaEdificios();
+            ViewBag.ListaCasa = HGetListas.GetListaCasas();
+            ViewBag.ListaCochera = HGetListas.GetListaCocheras();
             return View();
         }
 
@@ -54,7 +61,7 @@ namespace Control_Inmuebles.Controllers.Vinculos
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,AltaContrato,PlazoContrato,ClausuraContrato,PropietarioId,InquilinoId,InmuebleId,ValorContrato,DestinoInmueble,GaranteId")] Contrato contrato)
+        public async Task<IActionResult> Create([Bind("Id,AltaContrato,PlazoContrato,ClausuraContrato,PropietarioId,InquilinoId,Inmueble,ValorContrato,Garante1,Garante2,CasaId,CocheraId,DepartamentoId")] Contrato contrato)
         {
             if (ModelState.IsValid)
             {
@@ -68,6 +75,13 @@ namespace Control_Inmuebles.Controllers.Vinculos
         // GET: Contratos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            ViewBag.ListaInquilino = HGetListas.GetListaInquilinos();
+            ViewBag.ListaPropietario = HGetListas.GetListaPropietarios();
+            ViewBag.ListaGarante = HGetListas.GetListaGarantes();
+            ViewBag.ListEdificios = HGetListas.GetListaEdificios();
+            ViewBag.ListaCasa = HGetListas.GetListaCasas();
+            ViewBag.ListaCochera = HGetListas.GetListaCocheras();
+
             if (id == null)
             {
                 return NotFound();
@@ -86,7 +100,7 @@ namespace Control_Inmuebles.Controllers.Vinculos
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,AltaContrato,PlazoContrato,ClausuraContrato,PropietarioId,InquilinoId,InmuebleId,ValorContrato,DestinoInmueble,GaranteId")] Contrato contrato)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,AltaContrato,PlazoContrato,ClausuraContrato,PropietarioId,InquilinoId,Inmueble,ValorContrato,Garante1,Garante2,CasaId,CocheraId,DepartamentoId")] Contrato contrato)
         {
             if (id != contrato.Id)
             {

@@ -27,7 +27,6 @@ namespace Control_Inmuebles.Models
         [StringLength(12, ErrorMessage = "El número es demasiado largo")]
         public string Dni { get; set; }
 
-        [Required]
         [ValidMayor18(ErrorMessage ="La persona debe ser mayor de 18 años")]
         public DateTime FechaNacimiento { get; set; }
 
@@ -67,5 +66,9 @@ namespace Control_Inmuebles.Models
             ErrorMessage = "e-mail incorrecto")]
         [MaxLength(25)]
         public string Email { get; set; }
+
+        [StringLength(50)]
+        [RegularExpression("^[a-zA-Z ]*$", ErrorMessage = "Solo puede ingresar letras y espacios")]
+        public string Nota { get; set; }
     }
 }

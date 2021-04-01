@@ -19,78 +19,129 @@ namespace Control_Inmuebles.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Control_Inmuebles.Models.Inmuebles.BaseInmueble", b =>
+            modelBuilder.Entity("Control_Inmuebles.Models.Inmuebles.Edificio", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Barrio")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
 
                     b.Property<string>("Direccion")
                         .IsRequired()
                         .HasColumnType("nvarchar(30)")
                         .HasMaxLength(30);
 
-                    b.Property<string>("Discriminator")
+                    b.Property<string>("Numero")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(5)")
+                        .HasMaxLength(5);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Edificio");
+                });
+
+            modelBuilder.Entity("Control_Inmuebles.Models.Inmuebles___Copia.Casa", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Barrio")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("Direccion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(30)")
+                        .HasMaxLength(30);
 
                     b.Property<string>("Numero")
                         .IsRequired()
                         .HasColumnType("nvarchar(5)")
                         .HasMaxLength(5);
 
-                    b.Property<int>("TipoInmuebleId")
-                        .HasColumnType("int");
+                    b.Property<string>("Observacion")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.HasKey("Id");
 
-                    b.ToTable("BaseInmueble");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("BaseInmueble");
+                    b.ToTable("Casa");
                 });
 
-            modelBuilder.Entity("Control_Inmuebles.Models.Inmuebles.DptoInmueble", b =>
+            modelBuilder.Entity("Control_Inmuebles.Models.Inmuebles___Copia.Cochera", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BaseInmuebleId")
-                        .HasColumnType("int");
+                    b.Property<string>("Barrio")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
 
-                    b.Property<string>("Descripcion")
+                    b.Property<string>("Direccion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(30)")
+                        .HasMaxLength(30);
+
+                    b.Property<string>("NumCochera")
                         .IsRequired()
                         .HasColumnType("nvarchar(3)")
                         .HasMaxLength(3);
 
-                    b.Property<int>("PisoInmuebleId")
-                        .HasColumnType("int");
+                    b.Property<string>("Numero")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(5)")
+                        .HasMaxLength(5);
 
                     b.HasKey("Id");
 
-                    b.ToTable("DptoInmueble");
+                    b.ToTable("Cochera");
                 });
 
-            modelBuilder.Entity("Control_Inmuebles.Models.Inmuebles.PisoInmueble", b =>
+            modelBuilder.Entity("Control_Inmuebles.Models.Inmuebles___Copia.Departamento", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BaseInmuebleId")
+                    b.Property<string>("Ambientes")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Dpto")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EdificioId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Descripcion")
+                    b.Property<string>("Observacion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Piso")
                         .IsRequired()
-                        .HasColumnType("nvarchar(3)")
-                        .HasMaxLength(3);
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("PisoInmueble");
+                    b.ToTable("Departamento");
                 });
 
             modelBuilder.Entity("Control_Inmuebles.Models.Localidades.Ciudad", b =>
@@ -196,8 +247,12 @@ namespace Control_Inmuebles.Migrations
 
                     b.Property<string>("Nombre")
                         .IsRequired()
-                        .HasColumnType("nvarchar(12)")
-                        .HasMaxLength(12);
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
+
+                    b.Property<string>("Nota")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.Property<string>("Numero")
                         .IsRequired()
@@ -260,8 +315,12 @@ namespace Control_Inmuebles.Migrations
 
                     b.Property<string>("Nombre")
                         .IsRequired()
-                        .HasColumnType("nvarchar(12)")
-                        .HasMaxLength(12);
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
+
+                    b.Property<string>("Nota")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.Property<string>("Numero")
                         .IsRequired()
@@ -324,8 +383,12 @@ namespace Control_Inmuebles.Migrations
 
                     b.Property<string>("Nombre")
                         .IsRequired()
-                        .HasColumnType("nvarchar(12)")
-                        .HasMaxLength(12);
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
+
+                    b.Property<string>("Nota")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
 
                     b.Property<string>("Numero")
                         .IsRequired()
@@ -429,23 +492,6 @@ namespace Control_Inmuebles.Migrations
                     b.ToTable("TipoServicio");
                 });
 
-            modelBuilder.Entity("Control_Inmuebles.Models.TipoInmueble", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Descripcion")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(30)")
-                        .HasMaxLength(30);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TipoInmueble");
-                });
-
             modelBuilder.Entity("Control_Inmuebles.Models.Vinculos.Contrato", b =>
                 {
                     b.Property<int>("Id")
@@ -456,18 +502,24 @@ namespace Control_Inmuebles.Migrations
                     b.Property<DateTime>("AltaContrato")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("ClausuraContrato")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("CasaId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("DestinoInmueble")
+                    b.Property<int>("CocheraId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DepartamentoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Garante1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Garante2")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Inmueble")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("GaranteId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("InmuebleId")
-                        .HasColumnType("int");
 
                     b.Property<int>("InquilinoId")
                         .HasColumnType("int");
@@ -485,36 +537,6 @@ namespace Control_Inmuebles.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Contrato");
-                });
-
-            modelBuilder.Entity("Control_Inmuebles.Models.Inmueble", b =>
-                {
-                    b.HasBaseType("Control_Inmuebles.Models.Inmuebles.BaseInmueble");
-
-                    b.Property<int>("CiudadId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("DptoInmuebleId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Estado")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Observaciones")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
-                    b.Property<int>("PaisId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PisoInmuebleId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProvinciaId")
-                        .HasColumnType("int");
-
-                    b.HasDiscriminator().HasValue("Inmueble");
                 });
 #pragma warning restore 612, 618
         }

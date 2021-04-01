@@ -54,7 +54,7 @@ namespace Control_Inmuebles.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre,Apellido,Dni,Domicilio,Numero,Piso,Departamento,Barrio,Ciudad,Provincia,Email")] Garante garante)
+        public async Task<IActionResult> Create([Bind("Id,Nombre,Apellido,Dni,Domicilio,Numero,Piso,Departamento,Barrio,Ciudad,Provincia,Email,Nota")] Garante garante)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace Control_Inmuebles.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Apellido,Dni,Domicilio,Numero,Piso,Departamento,Barrio,Ciudad,Provincia,Email")] Garante garante)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Apellido,Dni,Domicilio,Numero,Piso,Departamento,Barrio,Ciudad,Provincia,Email,Nota")] Garante garante)
         {
             if (id != garante.Id)
             {

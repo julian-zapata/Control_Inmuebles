@@ -7,7 +7,8 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="btn  btn-primary" asp-action="Create">Nuevo Inquilino</a>
+    <a class="btn  btn-primary"  asp-controller="Registros" asp-action="Index">Volver</a>
 </p>
 <table class="table">
     <thead>
@@ -22,7 +23,7 @@
                 @Html.DisplayNameFor(model => model.Dni)
             </th>
             <th>
-                Nota
+                @Html.DisplayNameFor(model => model.Nota)
             </th>
 
             <th></th>
@@ -41,15 +42,18 @@
                 @Html.DisplayFor(modelItem => item.Dni)
             </td>
             <td>
-                @*Hay agregar campo nota en el modelo*@
+                @Html.DisplayFor(modelItem => item.Nota)
             </td>
 
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                <a href="/Inquilinos/Edit/@item.Id/#NotaEdit">Agregar Nota</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+<a asp-controller="Registros" asp-action="Index">Volver a registros</a>

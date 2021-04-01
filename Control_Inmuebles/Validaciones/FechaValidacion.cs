@@ -42,7 +42,7 @@ namespace Control_Inmuebles.Validaciones
             {
                 var fechaMinEdad = DateTime.Now.AddYears(-18);
 
-                if ((DateTime)value < fechaMinEdad)
+                if ((DateTime)value > fechaMinEdad)
                 {
                     return false;
                 }

@@ -25,32 +25,55 @@ namespace Control_Inmuebles.Helpers
             return SelectListProvincias;
         }
 
-        public static SelectList GetTipoInmuebleSelectList()
+        public static SelectList GetListaInquilinos()
         {
-            var listaTipoInmuebles = _context.TipoInmueble.ToList();
-            var SelectListTipoInmueble = new SelectList(listaTipoInmuebles, "Id", "Descripcion");
-            return SelectListTipoInmueble;
+            var lista = _context.Inquilino.ToList();
+            var select = new SelectList(lista, "Id", "Apellido");
+            return select;
+        }
+         public static SelectList GetListaPropietarios()
+        {
+            var lista = _context.Propietario.ToList();
+            var select = new SelectList(lista, "Id", "Apellido");
+            return select;
+        }
+         public static SelectList GetListaGarantes()
+        {
+            var lista = _context.Garante.ToList();
+            var select = new SelectList(lista, "Id", "Apellido");
+            return select;
+        }
+         public static SelectList GetListaDptoPiso()
+        {
+            var lista = _context.Departamento.ToList();
+            var select = new SelectList(lista, "Id", "Piso");
+            return select;
+        }
+        public static SelectList GetListaDptoLetra()
+        {
+            var lista = _context.Departamento.ToList();
+            var select = new SelectList(lista, "Id", "Dpto");
+            return select;
+        }
+        public static SelectList GetListaCocheras()
+        {
+            var lista = _context.Cochera.ToList();
+            var select = new SelectList(lista, "Id", "Apellido");
+            return select;
+        }
+         public static SelectList GetListaCasas()
+        {
+            var lista = _context.Casa.ToList();
+            var select = new SelectList(lista, "Id", "Apellido");
+            return select;
         }
 
-        public static SelectList GetBaseInmuebleSelectList()
+        public static SelectList GetListaEdificios()
         {
-            var listaBaseInmueble = _context.TipoInmueble.ToList();
-            var SelectListBaseInmueble = new SelectList(listaBaseInmueble, "Id", "Descripcion");
-            return SelectListBaseInmueble;
+            var lista = _context.Edificio.ToList();
+            var select = new SelectList(lista, "Id", "Direccion");
+            return select;
         }
 
-        public static SelectList GetDirecInmuebleSelectList()
-        {
-            var listaBaseInmueble = _context.BaseInmueble.ToList();
-            var SelectListBaseInmueble = new SelectList(listaBaseInmueble, "Id","Direccion", "Numero");
-            return SelectListBaseInmueble;
-        }
-
-        public static SelectList GetPisoSelectList()
-        {
-            var listaPisoInmueble = _context.PisoInmueble.ToList();
-            var SelectListPiso = new SelectList(listaPisoInmueble, "Id", "Descripcion");
-            return SelectListPiso;
-        }
     }
 }
