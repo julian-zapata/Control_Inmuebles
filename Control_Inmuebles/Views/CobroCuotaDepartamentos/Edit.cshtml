@@ -1,0 +1,94 @@
+﻿@model Control_Inmuebles.Models.Movimientos.CobroCuotaDepartamento
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>CobroCuotaDepartamento</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="FechaCobro" class="control-label"></label>
+                <input asp-for="FechaCobro" class="form-control" />
+                <span asp-validation-for="FechaCobro" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="InquilinoId" class="control-label"></label>
+                <input asp-for="InquilinoId" class="form-control" />
+                <span asp-validation-for="InquilinoId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContratoDepartamento" class="control-label"></label>
+                <input asp-for="ContratoDepartamento" class="form-control" />
+                <span asp-validation-for="ContratoDepartamento" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="Edificio" class="control-label"></label>
+                <input asp-for="Edificio" class="form-control" />
+                <span asp-validation-for="Edificio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Piso" class="control-label"></label>
+                <input asp-for="Piso" class="form-control" />
+                <span asp-validation-for="Piso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="dpto" class="control-label"></label>
+                <input asp-for="dpto" class="form-control" />
+                <span asp-validation-for="dpto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoutaAlquiler" class="control-label"></label>
+                <input asp-for="CoutaAlquiler" class="form-control" />
+                <span asp-validation-for="CoutaAlquiler" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CuotaAgua" class="control-label"></label>
+                <input asp-for="CuotaAgua" class="form-control" />
+                <span asp-validation-for="CuotaAgua" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoutaMunicipal" class="control-label"></label>
+                <input asp-for="CoutaMunicipal" class="form-control" />
+                <span asp-validation-for="CoutaMunicipal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoutaRentas" class="control-label"></label>
+                <input asp-for="CoutaRentas" class="form-control" />
+                <span asp-validation-for="CoutaRentas" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="MotivoBaja" class="control-label"></label>
+                <input asp-for="MotivoBaja" class="form-control" />
+                <span asp-validation-for="MotivoBaja" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaBajaAnticipoContrato" class="control-label"></label>
+                <input asp-for="FechaBajaAnticipoContrato" class="form-control" />
+                <span asp-validation-for="FechaBajaAnticipoContrato" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlquileresAdeudados" class="control-label"></label>
+                <input asp-for="AlquileresAdeudados" class="form-control" />
+                <span asp-validation-for="AlquileresAdeudados" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

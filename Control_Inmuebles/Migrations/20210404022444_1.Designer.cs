@@ -4,14 +4,16 @@ using Control_Inmuebles.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Control_Inmuebles.Migrations
 {
     [DbContext(typeof(Control_InmueblesContext))]
-    partial class Control_InmueblesContextModelSnapshot : ModelSnapshot
+    [Migration("20210404022444_1")]
+    partial class _1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -83,20 +85,14 @@ namespace Control_Inmuebles.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ContratoDepartamentoId")
-                        .HasColumnType("int");
-
                     b.Property<int>("DepartamentoId")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("ValorAgua")
-                        .HasColumnType("decimal(18,4)");
+                    b.Property<int>("EdificioId")
+                        .HasColumnType("int");
 
-                    b.Property<decimal>("ValorMunicipalidad")
-                        .HasColumnType("decimal(18,4)");
-
-                    b.Property<decimal>("ValorRentas")
-                        .HasColumnType("decimal(18,4)");
+                    b.Property<int>("InquilinoId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -110,7 +106,10 @@ namespace Control_Inmuebles.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ContratoDepartamentoId")
+                    b.Property<decimal>("AlquileresAdeudados")
+                        .HasColumnType("decimal(18,4)");
+
+                    b.Property<int>("ContratoDepartamento")
                         .HasColumnType("int");
 
                     b.Property<decimal>("CoutaAlquiler")
@@ -128,11 +127,17 @@ namespace Control_Inmuebles.Migrations
                     b.Property<int>("Edificio")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("FechaBajaAnticipoContrato")
+                        .HasColumnType("datetime2");
+
                     b.Property<DateTime>("FechaCobro")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Inquilino")
+                    b.Property<int>("InquilinoId")
                         .HasColumnType("int");
+
+                    b.Property<string>("MotivoBaja")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Piso")
                         .HasColumnType("int");
@@ -185,9 +190,6 @@ namespace Control_Inmuebles.Migrations
 
                     b.Property<DateTime>("FechaNacimiento")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("Nacionalidad")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
@@ -257,9 +259,6 @@ namespace Control_Inmuebles.Migrations
                     b.Property<DateTime>("FechaNacimiento")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Nacionalidad")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("nvarchar(20)")
@@ -327,9 +326,6 @@ namespace Control_Inmuebles.Migrations
 
                     b.Property<DateTime>("FechaNacimiento")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("Nacionalidad")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
@@ -452,13 +448,16 @@ namespace Control_Inmuebles.Migrations
                     b.Property<DateTime>("AltaContrato")
                         .HasColumnType("datetime2");
 
+                    b.Property<decimal>("AumentoCuotaSegundoAño")
+                        .HasColumnType("decimal(18,4)");
+
+                    b.Property<decimal>("AumentoCuotaTercerAño")
+                        .HasColumnType("decimal(18,4)");
+
                     b.Property<decimal>("CuotaMensualPrimerAño")
                         .HasColumnType("decimal(18,4)");
 
                     b.Property<int>("DepartamentoId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("EdificioId")
                         .HasColumnType("int");
 
                     b.Property<int>("Garante1")
@@ -486,27 +485,7 @@ namespace Control_Inmuebles.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ContratoDepartamento");
-                });
-
-            modelBuilder.Entity("Control_Inmuebles.Models.Vinculos.Inmobiliaria", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Descripcion")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(30)")
-                        .HasMaxLength(30);
-
-                    b.Property<decimal>("Honorarios")
-                        .HasColumnType("decimal(18,4)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Inmobiliaria");
+                    b.ToTable("Contrato");
                 });
 #pragma warning restore 612, 618
         }

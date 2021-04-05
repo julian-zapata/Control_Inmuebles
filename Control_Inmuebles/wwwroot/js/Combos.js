@@ -41,28 +41,28 @@ $("#BaseInmuebleId-Create").change(function () {
 
 //Habilita Combos segun Elección
 
-$(document).ready(function () {
 
-    $("#ElijeInmueble").change(function () {
-        if ($(this).val() === "0") {
-            $("#DepartamentoContrato").prop("disabled", true);
-            $("#CasaContrato").prop("disabled", true);
-            $("#CocheraContrato").prop("disabled", true);
-        } 
+//    $("#ElijeInmueble").change(function () {
+//        if ($(this).val() === "0") {
+//            $("#DepartamentoContrato").prop("disabled", true);
+//            $("#CasaContrato").prop("disabled", true);
+//            $("#CocheraContrato").prop("disabled", true);
+//        } 
 
-        if ($(this).val() === "Inmueble-Depto") {
-            $("#DepartamentoContrato").prop("disabled", false);
-        } else { $("#DepartamentoContrato").prop("disabled", true); }
+//        if ($(this).val() === "Inmueble-Depto") {
+//            $("#DepartamentoContrato").prop("disabled", false);
+//        } else { $("#DepartamentoContrato").prop("disabled", true); }
 
-        if ($(this).val() === "Inmueble-Casa") {
-            $("#CasaContrato").prop("disabled", false);
-        } else { $("#CasaContrato").prop("disabled", true); }
+//        if ($(this).val() === "Inmueble-Casa") {
+//            $("#CasaContrato").prop("disabled", false);
+//        } else { $("#CasaContrato").prop("disabled", true); }
 
-        if ($(this).val() === "Inmueble-Cochera") {
-            $("#CocheraContrato").prop("disabled", false);
-        } else { $("#CocheraContrato").prop("disabled", true); }
-    });
+//        if ($(this).val() === "Inmueble-Cochera") {
+//            $("#CocheraContrato").prop("disabled", false);
+//        } else { $("#CocheraContrato").prop("disabled", true); }
+//    });
 
+//$(document).ready(function () {
 });
 
 //Habilita detalle segun inmueble elejido
@@ -129,3 +129,27 @@ $(document).ready(function () {
 
 //    //    });
 //    //});
+
+//$(document).ready(function () {
+//    var item = "<option value = '0'> Selecione Inquilino </option>";
+//    $("#NomApellido-Create").html(item);
+//});
+
+
+//$("#NomApellido-Create").change(function () {
+//    var inq = $("#NomApellido-Create").val();
+//    var url = "/Inquilinos/GetInquilinos";
+
+//    $.getJSON(url, { InquilinoId: inq }, function (data) {
+
+//        var item = "";
+//        $("#NomApellido-Create").empty();
+//        $.each(data, function (i, q) {
+//            item += "<option value = '" + q.id + "'>" + q.nombre + " " + q.apellido + "</option>";
+//        });
+
+//        $("#NomApellido-Create").html(item);
+
+//    });
+//});
+

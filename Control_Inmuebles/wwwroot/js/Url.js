@@ -1,7 +1,7 @@
 ﻿//URL de la Pagina de Registros - Personas
 
 $("#ContratosBT").click(function () {
-    window.location.href = "/contratos/index/";
+    window.location.href = "/ContratoDepartamentos/index/";
 });
 
 //URL de la Pagina de Registros - Personas
@@ -26,6 +26,10 @@ $("#ImpuestosBT").click(function () {
 
 $("#ServiciosBT").click(function () {
     window.location.href = "/TipoServicio/index/";
+});
+
+$("#InmobiliariasBT").click(function () {
+    window.location.href = "/Inmobiliaria/index/";
 });
 
 //URL de la Pagina de Registros - Inmuebles

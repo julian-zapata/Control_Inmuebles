@@ -1,0 +1,88 @@
+﻿@model Control_Inmuebles.Models.Vinculos.ContratoDepartamento
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>ContratoDepartamento</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PropietarioId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GetPropietario().NombreCompleto)
+            <a href="/Propietarios/Details/@Html.DisplayFor(model => model.PropietarioId)" >ver</a>
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InquilinoId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GetInquilino().NombreCompleto)
+            <a href="/Inquilinos/Details/@Html.DisplayFor(model => model.InquilinoId)">ver</a>
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DepartamentoId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GetDepartamento().DatosDepto)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PlazoContrato)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PlazoContrato) años
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CuotaMensualPrimerAño)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CuotaMensualPrimerAño)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Garante1)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GetGarante1().NombreCompleto)
+            <a href="/Garantes/Details/@Html.DisplayFor(model => model.Garante1)">ver</a>
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Garante2)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GetGarante2().NombreCompleto)
+            <a href="/Garantes/Details/@Html.DisplayFor(model => model.Garante2)">ver</a>
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InmobiliariaId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GetInmobiliaria().Descripcion)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AltaContrato)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AltaContrato)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ClausuraContrato)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClausuraContrato)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NumContrato)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NumContrato)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

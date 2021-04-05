@@ -1,0 +1,107 @@
+﻿@model IEnumerable<Control_Inmuebles.Models.Movimientos.CobroCuotaDepartamento>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaCobro)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.InquilinoId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContratoDepartamento)*@
+            @*</th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Edificio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Piso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dpto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CoutaAlquiler)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CuotaAgua)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CoutaMunicipal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CoutaRentas)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.MotivoBaja)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaBajaAnticipoContrato)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlquileresAdeudados)
+            </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaCobro)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.InquilinoId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContratoDepartamento)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Edificio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Piso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dpto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CoutaAlquiler)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CuotaAgua)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CoutaMunicipal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CoutaRentas)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.MotivoBaja)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaBajaAnticipoContrato)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlquileresAdeudados)
+            </td>*@
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

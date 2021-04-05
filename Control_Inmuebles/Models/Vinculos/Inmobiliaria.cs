@@ -5,12 +5,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Control_Inmuebles.Models.Servicios_Impuestos
+namespace Control_Inmuebles.Models.Vinculos
 {
-    public class Servicio : BaseImpuestoServicio
+    public class Inmobiliaria: Tipo
     {
-        [Required(ErrorMessage = "Campo requerido")]
-        public int TipoServicioId { get; set; }
-
+        [Required]
+        [Column(TypeName = "decimal(18,4)")]
+        public decimal Honorarios { get; set; }
     }
 }

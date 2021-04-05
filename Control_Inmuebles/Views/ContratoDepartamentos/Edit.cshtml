@@ -1,0 +1,87 @@
+﻿@model Control_Inmuebles.Models.Vinculos.ContratoDepartamento
+
+@{
+    ViewData["Title"] = "Edit";
+    SelectList listaPropietarios = ViewBag.Propietarios;
+    SelectList listaInquilinos = ViewBag.Inquilinos;
+    SelectList listaGarantes = ViewBag.Garantes;
+    SelectList listaDepto = ViewBag.Depto;
+    SelectList listaInmobiliaria = ViewBag.Inmobiliaria;
+}
+
+<h1>Edit</h1>
+
+<h4>ContratoDepartamento</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="PropietarioId" class="control-label"></label>
+                <select asp-for="PropietarioId" asp-items="listaPropietarios" class="form-control"></select>
+                <span asp-validation-for="PropietarioId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InquilinoId" class="control-label"></label>
+                <select asp-for="InquilinoId" asp-items="listaInquilinos" class="form-control"></select>
+                <span asp-validation-for="InquilinoId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DepartamentoId" class="control-label"></label>
+                <select asp-for="DepartamentoId" asp-items="listaDepto" class="form-control"></select>
+                <span asp-validation-for="DepartamentoId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PlazoContrato" class="control-label"></label>
+                <select asp-for="PlazoContrato" class="form-control">
+                    <option value="2">2 años</option>
+                    <option value="3">3 años</option>
+                </select>
+                <span asp-validation-for="PlazoContrato" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CuotaMensualPrimerAño" class="control-label"></label>
+                <input asp-for="CuotaMensualPrimerAño" class="form-control" />
+                <span asp-validation-for="CuotaMensualPrimerAño" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Garante1" class="control-label"></label>
+                <select asp-for="Garante1" asp-items="listaGarantes" class="form-control"></select>
+                <span asp-validation-for="Garante1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Garante2" class="control-label"></label>
+                <select asp-for="Garante2" asp-items="listaGarantes" class="form-control"></select>
+                <span asp-validation-for="Garante2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InmobiliariaId" class="control-label"></label>
+                <select asp-for="InmobiliariaId" asp-items="listaInmobiliaria" class="form-control"></select>
+                <span asp-validation-for="InmobiliariaId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AltaContrato" class="control-label"></label>
+                <input asp-for="AltaContrato" class="form-control" />
+                <span asp-validation-for="AltaContrato" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumContrato" class="control-label"></label>
+                <input asp-for="NumContrato" class="form-control" />
+                <span asp-validation-for="NumContrato" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

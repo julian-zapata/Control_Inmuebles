@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 using static Control_Inmuebles.Validaciones.FechaValidacion;
@@ -27,6 +28,7 @@ namespace Control_Inmuebles.Models
         [StringLength(12, ErrorMessage = "El número es demasiado largo")]
         public string Dni { get; set; }
 
+        [Required]
         [ValidMayor18(ErrorMessage ="La persona debe ser mayor de 18 años")]
         public DateTime FechaNacimiento { get; set; }
 
@@ -67,8 +69,19 @@ namespace Control_Inmuebles.Models
         [MaxLength(25)]
         public string Email { get; set; }
 
+        [RegularExpression("^[a-zA-Z ]*$", ErrorMessage = "Solo puede ingresar letras y espacios")]
+        public string Nacionalidad { get; set; }
+
+
+
         [StringLength(50)]
         [RegularExpression("^[a-zA-Z ]*$", ErrorMessage = "Solo puede ingresar letras y espacios")]
         public string Nota { get; set; }
+
+        [NotMapped]
+        public string NombreCompleto
+        {
+            get { return Apellido + " " + Nombre + " " + Dni; }
+        }
     }
 }
