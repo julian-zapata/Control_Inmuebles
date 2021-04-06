@@ -46,6 +46,9 @@ namespace Control_Inmuebles.Controllers.Movimientos
         // GET: Alquileres/Create
         public IActionResult Create()
         {
+            ViewBag.listaContratos = Helpers.HGetListas.GetListaContrato();
+            ViewBag.listaEdificio = Helpers.HGetListas.GetListaEdificios();
+            ViewBag.listaDepto = Helpers.HGetListas.GetListaDpto();
             return View();
         }
 
@@ -54,7 +57,7 @@ namespace Control_Inmuebles.Controllers.Movimientos
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,EdificioId,DepartamentoId,InquilinoId")] Alquiler alquiler)
+        public async Task<IActionResult> Create([Bind("Id,ContratoDepartamentoId,EdificioId,DepartamentoId,ValorAgua,ValorRentas,ValorMunicipalidad")] Alquiler alquiler)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +89,7 @@ namespace Control_Inmuebles.Controllers.Movimientos
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,EdificioId,DepartamentoId,InquilinoId")] Alquiler alquiler)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ContratoDepartamentoId,EdificioId,DepartamentoId,ValorAgua,ValorRentas,ValorMunicipalidad")] Alquiler alquiler)
         {
             if (id != alquiler.Id)
             {

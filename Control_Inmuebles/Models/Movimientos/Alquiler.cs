@@ -17,15 +17,16 @@ namespace Control_Inmuebles.Models.Movimientos
 
         [Required]
         public int ContratoDepartamentoId { get; set; }
-        //public int EdificioId { get; set; }
-        //public int DepartamentoId { get; set; }
-        //public int InquilinoId { get; set; }
 
-        //Inmueble
+        [Required]
+        public int EdificioId { get; set; }
 
+        [Required]
         public int DepartamentoId { get; set; }
 
+
         //Valor de la Cuota
+        [NotMapped]
         public decimal ValorCuota { get { return MuestraCuota(); } }
 
         public decimal MuestraCuota()
@@ -48,9 +49,13 @@ namespace Control_Inmuebles.Models.Movimientos
         public decimal ValorMunicipalidad { get; set; }
 
         //Abonó mes completo?
+        [NotMapped]
         public bool CompletoCuotaMes { get { return MesCompleto(); } }
+        [NotMapped]
         public bool CompletoAguaMes { get { return AguaCompleto(); } }
+        [NotMapped]
         public bool CompletoMunicipalidadMes { get {return MunicipalCompleto(); } }
+        [NotMapped]
         public bool CompletoRentasMes { get { return RentasCompleto(); } }
 
         ContratoDepartamento contrato = new ContratoDepartamento();

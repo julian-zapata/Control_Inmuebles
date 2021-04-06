@@ -22,11 +22,8 @@ namespace Control_Inmuebles.Models.Movimientos
         [Required]
         public int ContratoDepartamentoId { get; set; }
 
-
-        public int Inquilino { get; set; }
-        public int Edificio { get; set; }
-        public int Piso { get; set; }
-        public int dpto { get; set; }
+        public int DepartamentoId { get; set; }
+        public int InquilinoId { get; set; }
 
         //Debe pagar alquiler, agua, impuesto municipal y rentas
         [Required]

@@ -160,5 +160,7 @@ namespace Control_Inmuebles.Models.Vinculos
             return ed;
         }
 
+        [NotMapped]
+        public string NombreDepartamento { get { return GetInquilino().NombreCompleto + " " + GetDepartamento().DatosDepto; } }
     }
 }

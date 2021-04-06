@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Control_Inmuebles.Models.Movimientos.CobroCuotaDepartamento>
+﻿@model IEnumerable<Control_Inmuebles.Models.Movimientos.Alquiler>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,22 +13,25 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.InquilinoId)
+                @Html.DisplayNameFor(model => model.ContratoDepartamentoId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EdificioId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DepartamentoId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CoutaAlquiler)
+                @Html.DisplayNameFor(model => model.ValorCuota)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CuotaAgua)
+                @Html.DisplayNameFor(model => model.ValorAgua)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CoutaMunicipal)
+                @Html.DisplayNameFor(model => model.ValorRentas)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CoutaRentas)
+                @Html.DisplayNameFor(model => model.ValorMunicipalidad)
             </th>
             <th></th>
         </tr>
@@ -37,22 +40,25 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.InquilinoId)
+                @Html.DisplayFor(modelItem => item.ContratoDepartamentoId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EdificioId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DepartamentoId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CoutaAlquiler)
+                @Html.DisplayFor(modelItem => item.ValorCuota)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CuotaAgua)
+                @Html.DisplayFor(modelItem => item.ValorAgua)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CoutaMunicipal)
+                @Html.DisplayFor(modelItem => item.ValorRentas)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CoutaRentas)
+                @Html.DisplayFor(modelItem => item.ValorMunicipalidad)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

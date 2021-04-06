@@ -19,13 +19,13 @@ namespace Control_Inmuebles.Controllers.Movimientos
             _context = context;
         }
 
-        // GET: CobroCuotaDepartamentoes
+        // GET: CobroCuotaDepartamentos
         public async Task<IActionResult> Index()
         {
             return View(await _context.CobroCuotaDepartamento.ToListAsync());
         }
 
-        // GET: CobroCuotaDepartamentoes/Details/5
+        // GET: CobroCuotaDepartamentos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -43,18 +43,20 @@ namespace Control_Inmuebles.Controllers.Movimientos
             return View(cobroCuotaDepartamento);
         }
 
-        // GET: CobroCuotaDepartamentoes/Create
+        // GET: CobroCuotaDepartamentos/Create
         public IActionResult Create()
         {
+            ViewBag.Contrato = Helpers.HGetListas.GetListaContrato();
+            ViewBag.ContratoCuota = Helpers.HGetListas.GetListaContratoCouta();
             return View();
         }
 
-        // POST: CobroCuotaDepartamentoes/Create
+        // POST: CobroCuotaDepartamentos/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FechaCobro,InquilinoId,ContratoDepartamento,Edificio,Piso,dpto,CoutaAlquiler,CuotaAgua,CoutaMunicipal,CoutaRentas,MotivoBaja,FechaBajaAnticipoContrato,AlquileresAdeudados")] CobroCuotaDepartamento cobroCuotaDepartamento)
+        public async Task<IActionResult> Create([Bind("Id,FechaCobro,ContratoDepartamentoId,Inquilino,Edificio,Piso,dpto,CoutaAlquiler,CuotaAgua,CoutaMunicipal,CoutaRentas")] CobroCuotaDepartamento cobroCuotaDepartamento)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +67,7 @@ namespace Control_Inmuebles.Controllers.Movimientos
             return View(cobroCuotaDepartamento);
         }
 
-        // GET: CobroCuotaDepartamentoes/Edit/5
+        // GET: CobroCuotaDepartamentos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -81,12 +83,12 @@ namespace Control_Inmuebles.Controllers.Movimientos
             return View(cobroCuotaDepartamento);
         }
 
-        // POST: CobroCuotaDepartamentoes/Edit/5
+        // POST: CobroCuotaDepartamentos/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FechaCobro,InquilinoId,ContratoDepartamento,Edificio,Piso,dpto,CoutaAlquiler,CuotaAgua,CoutaMunicipal,CoutaRentas,MotivoBaja,FechaBajaAnticipoContrato,AlquileresAdeudados")] CobroCuotaDepartamento cobroCuotaDepartamento)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FechaCobro,ContratoDepartamentoId,Inquilino,Edificio,Piso,dpto,CoutaAlquiler,CuotaAgua,CoutaMunicipal,CoutaRentas")] CobroCuotaDepartamento cobroCuotaDepartamento)
         {
             if (id != cobroCuotaDepartamento.Id)
             {
@@ -116,7 +118,7 @@ namespace Control_Inmuebles.Controllers.Movimientos
             return View(cobroCuotaDepartamento);
         }
 
-        // GET: CobroCuotaDepartamentoes/Delete/5
+        // GET: CobroCuotaDepartamentos/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -134,7 +136,7 @@ namespace Control_Inmuebles.Controllers.Movimientos
             return View(cobroCuotaDepartamento);
         }
 
-        // POST: CobroCuotaDepartamentoes/Delete/5
+        // POST: CobroCuotaDepartamentos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
