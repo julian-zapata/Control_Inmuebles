@@ -46,8 +46,7 @@ namespace Control_Inmuebles.Controllers.Movimientos
         // GET: CobroCuotaDepartamentos/Create
         public IActionResult Create()
         {
-            ViewBag.Contrato = Helpers.HGetListas.GetListaContrato();
-            ViewBag.ContratoCuota = Helpers.HGetListas.GetListaContratoCouta();
+            ViewBag.alquileres = Helpers.HGetListas.GetListaAlquileres();
             return View();
         }
 
@@ -56,7 +55,7 @@ namespace Control_Inmuebles.Controllers.Movimientos
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FechaCobro,ContratoDepartamentoId,Inquilino,Edificio,Piso,dpto,CoutaAlquiler,CuotaAgua,CoutaMunicipal,CoutaRentas")] CobroCuotaDepartamento cobroCuotaDepartamento)
+        public async Task<IActionResult> Create([Bind("Id,FechaCobro,AlquilerId,Inquilino,Edificio,Piso,dpto,CoutaAlquiler,CuotaAgua,CoutaMunicipal,CoutaRentas")] CobroCuotaDepartamento cobroCuotaDepartamento)
         {
             if (ModelState.IsValid)
             {
@@ -70,6 +69,7 @@ namespace Control_Inmuebles.Controllers.Movimientos
         // GET: CobroCuotaDepartamentos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            ViewBag.alquileres = Helpers.HGetListas.GetListaAlquileres();
             if (id == null)
             {
                 return NotFound();
@@ -88,7 +88,7 @@ namespace Control_Inmuebles.Controllers.Movimientos
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FechaCobro,ContratoDepartamentoId,Inquilino,Edificio,Piso,dpto,CoutaAlquiler,CuotaAgua,CoutaMunicipal,CoutaRentas")] CobroCuotaDepartamento cobroCuotaDepartamento)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FechaCobro,AlquilerId,Inquilino,Edificio,Piso,dpto,CoutaAlquiler,CuotaAgua,CoutaMunicipal,CoutaRentas")] CobroCuotaDepartamento cobroCuotaDepartamento)
         {
             if (id != cobroCuotaDepartamento.Id)
             {

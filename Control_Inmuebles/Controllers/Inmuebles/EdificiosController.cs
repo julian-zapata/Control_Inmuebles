@@ -149,5 +149,6 @@ namespace Control_Inmuebles.Controllers.Inmuebles
         {
             return _context.Edificio.Any(e => e.Id == id);
         }
+
     }
 }

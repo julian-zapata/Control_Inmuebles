@@ -86,7 +86,7 @@ namespace Control_Inmuebles.Models.Vinculos
             return fin;
         }
 
-        [RegularExpression("(^[0-9]+$)", ErrorMessage = "Solo se permiten números")]
+        [RegularExpression("(^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$)", ErrorMessage = "Solo se permiten números")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "El número es obligatorio")]
         [StringLength(30, ErrorMessage = "El número es demasiado largo")]
         public string NumContrato { get; set; }
@@ -162,5 +162,10 @@ namespace Control_Inmuebles.Models.Vinculos
 
         [NotMapped]
         public string NombreDepartamento { get { return GetInquilino().NombreCompleto + " " + GetDepartamento().DatosDepto; } }
+         [NotMapped]
+        public string NombreInquilino { get { return GetInquilino().NombreCompleto; } }
+         [NotMapped]
+        public string NombreDpto { get { return GetDepartamento().DatosDepto; } }
+        
     }
 }

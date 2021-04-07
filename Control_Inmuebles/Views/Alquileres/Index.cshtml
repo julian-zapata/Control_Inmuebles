@@ -13,25 +13,26 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ContratoDepartamentoId)
+                Inquilino
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EdificioId)
+                Edificio
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DepartamentoId)
+                Piso/Dpto
+            </th>
+
+            <th>
+                Cuota
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ValorCuota)
+                Agua
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ValorAgua)
+                Rentas
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ValorRentas)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ValorMunicipalidad)
+                Municipal
             </th>
             <th></th>
         </tr>
@@ -40,25 +41,25 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ContratoDepartamentoId)
+                @Html.DisplayFor(modelItem => item.MuestraDatoContrato().NombreInquilino)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.EdificioId)
+                @Html.DisplayFor(modelItem => item.MuestraDatoContrato().GetDepartamento().DatoEdificio)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DepartamentoId)
+                @Html.DisplayFor(modelItem => item.MuestraDatoContrato().NombreDpto)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ValorCuota)
+                @Html.DisplayFor(modelItem => item.CompletoCuotaMes)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ValorAgua)
+                @Html.DisplayFor(modelItem => item.CompletoAguaMes)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ValorRentas)
+                @Html.DisplayFor(modelItem => item.CompletoRentasMes)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ValorMunicipalidad)
+                @Html.DisplayFor(modelItem => item.CompletoMunicipalidadMes)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

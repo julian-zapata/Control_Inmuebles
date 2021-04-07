@@ -1,4 +1,5 @@
-﻿using Control_Inmuebles.Models.Impuestos;
+﻿using Control_Inmuebles.Data;
+using Control_Inmuebles.Models.Impuestos;
 using Control_Inmuebles.Models.Servicios;
 using Control_Inmuebles.Models.Vinculos;
 using System;
@@ -18,21 +19,18 @@ namespace Control_Inmuebles.Models.Movimientos
         [Required]
         public int ContratoDepartamentoId { get; set; }
 
-        [Required]
-        public int EdificioId { get; set; }
-
-        [Required]
-        public int DepartamentoId { get; set; }
-
-
         //Valor de la Cuota
         [NotMapped]
-        public decimal ValorCuota { get { return MuestraCuota(); } }
+        public decimal ValorCuota { get; set; }
 
-        public decimal MuestraCuota()
+        public ContratoDepartamento MuestraDatoContrato()
         {
-            ContratoDepartamento cd = new ContratoDepartamento();
-            return cd.CuotaMensualPrimerAño;
+            ContratoDepartamento cd;
+            using(var context = new Control_InmueblesContext())
+            {
+                cd = context.ContratoDepartamento.Where(x => x.Id == ContratoDepartamentoId).FirstOrDefault();
+            }
+            return cd;
         }
 
         //Impuesto por unidad
@@ -50,55 +48,19 @@ namespace Control_Inmuebles.Models.Movimientos
 
         //Abonó mes completo?
         [NotMapped]
-        public bool CompletoCuotaMes { get { return MesCompleto(); } }
+        public string CompletoCuotaMes { get;  }
         [NotMapped]
-        public bool CompletoAguaMes { get { return AguaCompleto(); } }
+        public string CompletoAguaMes { get; }
         [NotMapped]
-        public bool CompletoMunicipalidadMes { get {return MunicipalCompleto(); } }
+        public string CompletoMunicipalidadMes { get; }
         [NotMapped]
-        public bool CompletoRentasMes { get { return RentasCompleto(); } }
+        public string CompletoRentasMes { get;  }
 
-        ContratoDepartamento contrato = new ContratoDepartamento();
-        CobroCuotaDepartamento cobro = new CobroCuotaDepartamento();
-        AguasCordobesas ag = new AguasCordobesas();
-        Municipal m = new Municipal();
-        Rentas r = new Rentas();
+        //Metodos de pago completo o mora
 
-        public bool MesCompleto()
-        {
-            if(contrato.CuotaMensualPrimerAño == cobro.CoutaAlquiler)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        public bool AguaCompleto()
-        {
-            if(ag.Monto == cobro.CuotaAgua)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        public bool MunicipalCompleto()
-        {
-            if(m.Monto == cobro.CoutaMunicipal)
-            {
-                return true;
-            }
-            return false;
-        }
-
-         public bool RentasCompleto()
-        {
-            if(r.Monto == cobro.CoutaRentas)
-            {
-                return true;
-            }
-            return false;
-        }
-
+        [NotMapped]
+        public string DatosInquilinosDepto { get { return MuestraDatoContrato().NombreDepartamento; } }
+        [NotMapped]
+        public string NombreInquilino { get { return MuestraDatoContrato().NombreInquilino; } }
     }
 }

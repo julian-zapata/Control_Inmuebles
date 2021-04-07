@@ -10,6 +10,7 @@ namespace Control_Inmuebles.Models.Inmuebles
 {
     public class Edificio : BaseDireccion
     {
-        
+       [NotMapped]
+        public string DatoEdificio { get { return Direccion + " " + Numero; } }
     }
 }

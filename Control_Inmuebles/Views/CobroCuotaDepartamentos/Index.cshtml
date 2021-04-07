@@ -13,10 +13,16 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.InquilinoId)
+                @Html.DisplayNameFor(model => model.FechaCobro)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DepartamentoId)
+                @Html.DisplayNameFor(model => model.Inquilino)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Edificio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Departamento)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CoutaAlquiler)
@@ -37,10 +43,16 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.InquilinoId)
+                @Html.DisplayFor(modelItem => item.FechaCobro)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DepartamentoId)
+                @Html.DisplayFor(modelItem => item.MuestraDatosAlquiler().NombreInquilino)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MuestraDatosAlquiler().MuestraDatoContrato().GetDepartamento().DatoEdificio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MuestraDatosAlquiler().MuestraDatoContrato().GetDepartamento().DatosSoloDepto)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CoutaAlquiler)

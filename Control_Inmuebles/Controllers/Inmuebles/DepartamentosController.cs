@@ -150,5 +150,6 @@ namespace Control_Inmuebles.Controllers.Inmuebles
         {
             return _context.Departamento.Any(e => e.Id == id);
         }
+
     }
 }

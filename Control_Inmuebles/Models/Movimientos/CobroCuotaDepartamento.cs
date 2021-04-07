@@ -20,95 +20,51 @@ namespace Control_Inmuebles.Models.Movimientos
         public DateTime FechaCobro { get; set; }
 
         [Required]
-        public int ContratoDepartamentoId { get; set; }
+        public int AlquilerId { get; set; }
 
-        public int DepartamentoId { get; set; }
-        public int InquilinoId { get; set; }
+        [NotMapped]
+        public int Inquilino { get; set; }
+        [NotMapped]
+        public int Edificio { get; set; }
+         [NotMapped]
+        public int Departamento { get; set; }
+        
 
         //Debe pagar alquiler, agua, impuesto municipal y rentas
         [Required]
         [Column(TypeName = "decimal(18,4)")]
         public decimal CoutaAlquiler { get; set; }
-        public decimal ValorCouta { get { return MuestraCuota(); } }
+        [NotMapped]
+        public decimal ValorCouta { get; set; }
+
         [Required]
         [Column(TypeName = "decimal(18,4)")]
         public decimal CuotaAgua { get; set; }
-        public decimal ValorAgua { get { return MuestraValorAgua(); } }
+        [NotMapped]
+        public decimal ValorAgua { get; set; }
+
         [Required]
         [Column(TypeName = "decimal(18,4)")]
         public decimal CoutaMunicipal { get; set; }
-        public decimal ValorRentas { get { return MuestraValorRentas(); } }
+        [NotMapped]
+        public decimal ValorRentas { get; set; }
+
         [Required]
         [Column(TypeName = "decimal(18,4)")]
         public decimal  CoutaRentas { get; set; }
-        public decimal ValorMunicipalidad { get { return MuestraValorMunicipalidad(); } }
+        [NotMapped]
+        public decimal ValorMunicipalidad { get;set; }
 
         //Metodos para mostrar el valor de cada tipo de cuota
         
-        public decimal MuestraCuota()
+       public Alquiler MuestraDatosAlquiler()
         {
-            ContratoDepartamento ct = new ContratoDepartamento();
-            return ct.CuotaMensualPrimerAño;
+            Alquiler alq;
+            using(var context = new Control_InmueblesContext())
+            {
+                alq = context.Alquiler.Where(x => x.Id == AlquilerId).FirstOrDefault();
+            }
+            return alq;
         }
-
-        Alquiler dp = new Alquiler();
-
-        public decimal MuestraValorAgua()
-        {
-            return dp.ValorAgua;
-        }
-        public decimal MuestraValorRentas()
-        {
-            return dp.ValorRentas;
-        }
-        public decimal MuestraValorMunicipalidad()
-        {
-            return dp.ValorMunicipalidad;
-        }
-
-
-
-        //Mora
-        //[Column(TypeName = "decimal(18,4)")]
-        //public decimal Mora { get { return RecargoMora(FechaCobro); } }
-        //public decimal RecargoMora(DateTime FechaAtraso)
-        //{
-        //    decimal recargo;
-        //    DateTime fecha = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
-        //    DateTime diasAtraso = fecha.AddDays(+10);
-        //    if(FechaAtraso > diasAtraso)
-        //    {
-        //        int diasRecargo = diasAtraso.Day - FechaAtraso.Day;
-        //        decimal porcentajeRecargo = (decimal)(diasRecargo * 0.03);
-        //        recargo = CoutaAlquiler * porcentajeRecargo;
-        //        return recargo - CoutaAlquiler;
-        //    }
-        //    return 0;
-        //}
-
-        //Interrrupcion de contrato
-        //public string MotivoBaja { get; set; }
-        //public DateTime FechaBajaAnticipoContrato { get; set; }
-
-        //[Column(TypeName = "decimal(18,4)")]
-        //public decimal Indenmizacion { get { return MontoIndenmizacion(FechaBajaAnticipoContrato); } }
-
-        //[Column(TypeName = "decimal(18,4)")]
-        //public decimal AlquileresAdeudados { get; set; }
-
-        //public decimal MontoIndenmizacion(DateTime baja)
-        //{
-        //    ContratoDepartamento c = new ContratoDepartamento();
-
-        //    if (baja < c.AltaContrato.AddMonths(+6))
-        //    {
-        //        return c.CuotaMensualPrimerAño;
-        //    }
-        //    else if (baja < c.AltaContrato.AddMonths(+12))
-        //    {
-        //        return c.CuotaMensualPrimerAño + (c.CuotaMensualPrimerAño / 2);
-        //    }
-        //    return (0);
-        //}
     }
 }

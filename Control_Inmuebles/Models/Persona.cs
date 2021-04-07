@@ -34,7 +34,6 @@ namespace Control_Inmuebles.Models
 
         [Required(ErrorMessage = "Domicilio requerido")]
         [StringLength(30, MinimumLength = 3, ErrorMessage = "mínimo 3 caracteres")]
-        [RegularExpression("^[a-zA-Z ]*$", ErrorMessage = "Solo puede ingresar letras y espacios")]
         public string Domicilio { get; set; }
 
         [RegularExpression("(^[0-9]+$)", ErrorMessage = "Solo se permiten números")]

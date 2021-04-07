@@ -90,10 +90,10 @@ namespace Control_Inmuebles.Helpers
             return select;
         }
 
-        public static SelectList GetListaContratoCouta()
+        public static SelectList GetListaAlquileres()
         {
-            var lista = _context.ContratoDepartamento.ToList();
-            var select = new SelectList(lista, "Id", "CuotaMensualPrimerAño");
+            var lista = _context.Alquiler.ToList();
+            var select = new SelectList(lista, "Id", "DatosInquilinosDepto");
             return select;
         }
 

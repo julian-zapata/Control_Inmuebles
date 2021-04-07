@@ -4,14 +4,16 @@ using Control_Inmuebles.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Control_Inmuebles.Migrations
 {
     [DbContext(typeof(Control_InmueblesContext))]
-    partial class Control_InmueblesContextModelSnapshot : ModelSnapshot
+    [Migration("20210407134644_12 to PC")]
+    partial class _12toPC
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -86,6 +88,12 @@ namespace Control_Inmuebles.Migrations
                     b.Property<int>("ContratoDepartamentoId")
                         .HasColumnType("int");
 
+                    b.Property<int>("DepartamentoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EdificioId")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("ValorAgua")
                         .HasColumnType("decimal(18,4)");
 
@@ -107,7 +115,7 @@ namespace Control_Inmuebles.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AlquilerId")
+                    b.Property<int>("ContratoDepartamentoId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("CoutaAlquiler")
@@ -122,8 +130,14 @@ namespace Control_Inmuebles.Migrations
                     b.Property<decimal>("CuotaAgua")
                         .HasColumnType("decimal(18,4)");
 
+                    b.Property<int>("DepartamentoId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("FechaCobro")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("InquilinoId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
