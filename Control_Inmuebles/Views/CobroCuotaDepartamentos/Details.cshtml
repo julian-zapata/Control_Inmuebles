@@ -25,30 +25,31 @@
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.CoutaAlquiler)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CoutaAlquiler)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CoutaAlquiler)   <label class="border rounded pl-2 pr-2">@Html.DisplayFor(model => model.DifCuota)</label>
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.CuotaAgua)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CuotaAgua)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CuotaAgua)       <label class="border rounded pl-2 pr-2">@Html.DisplayFor(model => model.DifAgua)</label>
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.CoutaMunicipal)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CoutaMunicipal)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CoutaMunicipal)      <label class="border rounded pl-2 pr-2">@Html.DisplayFor(model => model.DifMunicipalidad)</label>
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.CoutaRentas)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CoutaRentas)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CoutaRentas)        <label class="border rounded pl-2 pr-2"> @Html.DisplayFor(model => model.DifRentas)</label>
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+    <a class="btn btn-primary" asp-action="Index">Back to List</a>
+    <a class="btn btn-primary" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
 </div>

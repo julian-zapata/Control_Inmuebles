@@ -57,7 +57,7 @@ namespace Control_Inmuebles.Controllers.Movimientos
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ContratoDepartamentoId,EdificioId,DepartamentoId,ValorAgua,ValorRentas,ValorMunicipalidad")] Alquiler alquiler)
+        public async Task<IActionResult> Create([Bind("Id,ContratoDepartamentoId,EdificioId,DepartamentoId,ValorAgua,ValorRentas,ValorMunicipalidad,CobroCuotaDepartamentoId")] Alquiler alquiler)
         {
             if (ModelState.IsValid)
             {
@@ -89,7 +89,7 @@ namespace Control_Inmuebles.Controllers.Movimientos
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ContratoDepartamentoId,EdificioId,DepartamentoId,ValorAgua,ValorRentas,ValorMunicipalidad")] Alquiler alquiler)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ContratoDepartamentoId,EdificioId,DepartamentoId,ValorAgua,ValorRentas,ValorMunicipalidad,CobroCuotaDepartamentoId")] Alquiler alquiler)
         {
             if (id != alquiler.Id)
             {

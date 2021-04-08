@@ -7,6 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\Impuestos\**" />
+    <Compile Remove="Controllers\Servicios\**" />
+    <Content Remove="Controllers\Impuestos\**" />
+    <Content Remove="Controllers\Servicios\**" />
+    <EmbeddedResource Remove="Controllers\Impuestos\**" />
+    <EmbeddedResource Remove="Controllers\Servicios\**" />
+    <None Remove="Controllers\Impuestos\**" />
+    <None Remove="Controllers\Servicios\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Migrations\20210405190738_add Inmobiliaria controller.cs" />
     <Compile Remove="Migrations\20210405190738_add Inmobiliaria controller.Designer.cs" />
   </ItemGroup>
@@ -26,11 +37,6 @@
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.12" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\Impuestos\" />
-    <Folder Include="Controllers\Servicios\" />
   </ItemGroup>
 
 </Project>

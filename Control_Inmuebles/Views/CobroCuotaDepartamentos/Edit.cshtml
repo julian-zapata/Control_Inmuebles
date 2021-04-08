@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Edit";
-    SelectList ListaContrato = ViewBag.Contrato;
+    SelectList ListaAlquileres = ViewBag.alquileres;
 }
 
 <h1>Edit</h1>
@@ -21,7 +21,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Inquilino" class="control-label"></label>
-                <select asp-for="AlquilerId" asp-items="ListaContrato" class="form-control" id="Cobro-Contrato-Create"></select>
+                <select asp-for="Inquilino" asp-items="ListaAlquileres" class="form-control" id="Cobro-Contrato-Create"></select>
                 <span asp-validation-for="AlquilerId" class="text-danger"></span>
                 @*Muestra lista de inquilinos con sus respectivos departamentos*@
             </div>
@@ -47,12 +47,15 @@
                 <input asp-for="CoutaRentas" class="form-control" />
                 <span asp-validation-for="CoutaRentas" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a class="btn btn-primary" asp-action="Details" asp-route-id="@Model.Id">Volver</a>
 </div>
 
 @section Scripts {

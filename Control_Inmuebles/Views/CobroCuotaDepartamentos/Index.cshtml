@@ -7,7 +7,8 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="btn  btn-primary" asp-action="Create">Crear</a>
+    <a class="btn  btn-primary" asp-controller="Home" asp-action="Index">Volver</a>
 </p>
 <table class="table">
     <thead>
@@ -25,7 +26,7 @@
                 @Html.DisplayNameFor(model => model.Departamento)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CoutaAlquiler)
+                @Html.DisplayNameFor(model => model.CoutaAlquiler)  
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CuotaAgua)
@@ -55,21 +56,21 @@
                 @Html.DisplayFor(modelItem => item.MuestraDatosAlquiler().MuestraDatoContrato().GetDepartamento().DatosSoloDepto)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CoutaAlquiler)
+                @Html.DisplayFor(modelItem => item.CoutaAlquiler)   <div class="border rounded pl-1 pr-1" >@Html.DisplayFor(modelItem => item.CompletoCuotaMes)</div>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CuotaAgua)
+                @Html.DisplayFor(modelItem => item.CuotaAgua)   <div class="border rounded pl-1 pr-1"> @Html.DisplayFor(modelItem => item.CompletoAguaMes)</div>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CoutaMunicipal)
+                @Html.DisplayFor(modelItem => item.CoutaMunicipal)  <div class="border rounded pl-1 pr-1"> @Html.DisplayFor(modelItem => item.CompletoMunicipalidadMes)</div>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CoutaRentas)
+                @Html.DisplayFor(modelItem => item.CoutaRentas)  <div class="border rounded pl-1 pr-1"> @Html.DisplayFor(modelItem => item.CompletoRentasMes)</div>
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                
+                <a class="btn btn-secondary" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                
             </td>
         </tr>
 }

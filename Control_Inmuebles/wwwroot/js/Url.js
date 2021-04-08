@@ -4,6 +4,10 @@ $("#ContratosBT").click(function () {
     window.location.href = "/ContratoDepartamentos/index/";
 });
 
+$("#AlquileresBT").click(function () {
+    window.location.href = "/Alquileres/index/";
+});
+
 //URL de la Pagina de Registros - Personas
 
 $("#InquilinosBT").click(function () {

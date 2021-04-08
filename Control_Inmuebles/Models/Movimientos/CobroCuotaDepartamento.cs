@@ -35,29 +35,37 @@ namespace Control_Inmuebles.Models.Movimientos
         [Column(TypeName = "decimal(18,4)")]
         public decimal CoutaAlquiler { get; set; }
         [NotMapped]
-        public decimal ValorCouta { get; set; }
+        public decimal ValorCouta { get { return MuestraDatosAlquiler().MuestraDatoContrato().CuotaMensualPrimerAño; } }
+        [NotMapped]
+        public string DifCuota { get { return DifSigno(CoutaAlquiler, ValorCouta); } }
 
         [Required]
         [Column(TypeName = "decimal(18,4)")]
         public decimal CuotaAgua { get; set; }
         [NotMapped]
-        public decimal ValorAgua { get; set; }
+        public decimal ValorAgua { get { return MuestraDatosAlquiler().ValorAgua; } }
+        [NotMapped]
+        public string DifAgua { get { return DifSigno(CuotaAgua, ValorAgua); } }
 
         [Required]
         [Column(TypeName = "decimal(18,4)")]
         public decimal CoutaMunicipal { get; set; }
         [NotMapped]
-        public decimal ValorRentas { get; set; }
+        public decimal ValorMunicipal { get { return MuestraDatosAlquiler().ValorMunicipalidad; } }
+        [NotMapped]
+        public string DifMunicipalidad { get { return DifSigno(CoutaMunicipal, ValorMunicipal); } }
 
         [Required]
         [Column(TypeName = "decimal(18,4)")]
         public decimal  CoutaRentas { get; set; }
         [NotMapped]
-        public decimal ValorMunicipalidad { get;set; }
+        public decimal ValorRentas { get { return MuestraDatosAlquiler().ValorRentas; } }
+        [NotMapped]
+        public string DifRentas { get { return DifSigno(CoutaRentas, ValorRentas); } }
 
         //Metodos para mostrar el valor de cada tipo de cuota
-        
-       public Alquiler MuestraDatosAlquiler()
+
+        public Alquiler MuestraDatosAlquiler()
         {
             Alquiler alq;
             using(var context = new Control_InmueblesContext())
@@ -66,5 +74,35 @@ namespace Control_Inmuebles.Models.Movimientos
             }
             return alq;
         }
+
+        public string DifSigno(decimal cobro, decimal valor)
+        {
+            if (cobro >= valor)
+            {
+                return "diferencia: + " + (cobro - valor);
+            }
+            else return "diferencia: " + (cobro - valor) + " deuda existente";
+        }
+
+        //Abonó mes completo?
+        [NotMapped]
+        public string CompletoCuotaMes { get { return PagoCompleto(ValorCouta, CoutaAlquiler); } }
+        [NotMapped]
+        public string CompletoAguaMes { get { return PagoCompleto(ValorAgua, CuotaAgua); } }
+        [NotMapped]
+        public string CompletoMunicipalidadMes { get { return PagoCompleto(ValorMunicipal, CoutaMunicipal); } }
+        [NotMapped]
+        public string CompletoRentasMes { get { return PagoCompleto(ValorRentas, CoutaRentas); } }
+
+        //Metodos de pago completo o mora
+        public string PagoCompleto(decimal valor, decimal pago)
+        {
+            if (valor <= pago)
+            {
+                return "completo";
+            }
+            else return "en deuda";
+        }
+
     }
 }

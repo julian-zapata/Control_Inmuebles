@@ -21,7 +21,7 @@ namespace Control_Inmuebles.Models.Movimientos
 
         //Valor de la Cuota
         [NotMapped]
-        public decimal ValorCuota { get; set; }
+        public decimal ValorCuota { get { return MuestraDatoContrato().CuotaMensualPrimerAño; } }
 
         public ContratoDepartamento MuestraDatoContrato()
         {
@@ -46,18 +46,22 @@ namespace Control_Inmuebles.Models.Movimientos
         [Column(TypeName = "decimal(18,4)")]
         public decimal ValorMunicipalidad { get; set; }
 
-        //Abonó mes completo?
+        //Estado
         [NotMapped]
-        public string CompletoCuotaMes { get;  }
-        [NotMapped]
-        public string CompletoAguaMes { get; }
-        [NotMapped]
-        public string CompletoMunicipalidadMes { get; }
-        [NotMapped]
-        public string CompletoRentasMes { get;  }
+        public string Estado { get { return VerEstado(); } }
 
-        //Metodos de pago completo o mora
+        public string VerEstado()
+        {
+            if (DateTime.Now < MuestraDatoContrato().ClausuraContrato)
+            {
+                return "ocupado";
+            }
+            else return "disponible";
+        }
 
+
+
+        //Datos de Complemento
         [NotMapped]
         public string DatosInquilinosDepto { get { return MuestraDatoContrato().NombreDepartamento; } }
         [NotMapped]
